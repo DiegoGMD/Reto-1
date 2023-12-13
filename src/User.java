@@ -1,7 +1,7 @@
 public class User {
-    String DNI;
-    String name;
-    int id_dep;
+    private String DNI;
+    private String name;
+    private int id_dep;
     public User(String DNI, String name, int id_dep) {
         this.DNI = DNI;
         this.name = name;

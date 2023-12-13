@@ -1,6 +1,6 @@
 public class Manager {
-    String DNI;
-    String name;
+    private String DNI;
+    private String name;
 
     public Manager(String DNI, String name) {
         this.DNI = DNI;

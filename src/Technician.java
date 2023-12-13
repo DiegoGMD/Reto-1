@@ -1,6 +1,6 @@
 public class Technician {
-    String DNI;
-    String name;
+    private String DNI;
+    private String name;
 
     public Technician(String DNI, String name) {
         this.DNI = DNI;
