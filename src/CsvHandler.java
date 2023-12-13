@@ -35,5 +35,37 @@ public class CsvHandler {
             }
         }
     }
+    public static List<Technician> getTechniciansCsv() throws IOException {
+        BufferedReader in = null;
+        List<Technician> technicians = new ArrayList<Technician>();
+        try {
+
+            in = new BufferedReader(new FileReader("Users.csv"));
+            String line = in.readLine();
+            while ((line = in.readLine()) != null) {
+                String[] userInfo = line.split(",");
+                technicians.add(new Technician(userInfo[0], userInfo[1]));
+            }
+        } finally {
+            if (in != null) {
+                in.close();
+            }
+        }
+        return technicians;
+    }
+    public static void writeTechniciansCsv(List<User> users) throws IOException {
+        PrintWriter out = null;
+        try {
+            out = new PrintWriter(new FileWriter("Users.csv"));
+            out.println("DNI,Name");
+            for (User user : users) {
+                out.println(user.getDNI() + "," + user.getName());
+            }
+        } finally {
+            if (out != null) {
+                out.close();
+            }
+        }
+    }
 
 }
