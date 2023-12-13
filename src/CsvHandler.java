@@ -21,6 +21,24 @@ public class CsvHandler {
         }
         return users;
     }
+
+    public static  List<Inventory> makeInventory() throws IOException {
+        BufferedReader input = null;
+        List<Inventory> inventory = new ArrayList<Inventory>();
+        try {
+            input = new BufferedReader(new FileReader("Equipo inventario.txt"));
+            String line;
+            while ((line = input.readLine()) != null) {
+                String[] items = line.split(",");
+                inventory.add(new Inventory(items[0], items[1]));
+            }
+        } finally {
+            if (input != null) {
+                input.close();
+            }
+        }
+        return inventory;
+    }
     public static void writeUsersCsv(List<User> users) throws IOException {
         PrintWriter out = null;
         try {

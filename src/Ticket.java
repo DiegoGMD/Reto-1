@@ -76,14 +76,14 @@ public class Ticket {
 
     public void setEstado() {
         System.out.println("Select the state of the ticket:" + "\n" +
-                            "1.NOT SOLVED" + "\t" + "2.IN PROGRESS" + "\t" + "3.SOLVED");
+                            "1.OPEN" + "\t" + "2.CLOSED" + "\t" + "3.SOLVED");
         Scanner input = new Scanner(System.in);
         switch (input.nextInt()){
             case 1:
-                estado = "NOT SOLVED";
+                estado = "OPEN";
                 break;
             case 2:
-                estado = "IN PROGRESS";
+                estado = "CLOSED";
                 break;
             case 3:
                 estado = "SOLVED";
