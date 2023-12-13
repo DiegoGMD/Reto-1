@@ -16,5 +16,9 @@ public class User {
     public int getId_dep() {
         return id_dep;
     }
+    @Override
+    public String toString() {
+        return ("User: " + name + " Dni: " + DNI + " ID_Departament: " + id_dep);
+    }
 
 }

@@ -12,4 +12,8 @@ public class Technician {
     public String getName() {
         return name;
     }
+    @Override
+    public String toString() {
+        return ("Technician: " + name + " Dni: " + DNI + " ID_Departament: ");
+    }
 }
