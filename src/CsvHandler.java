@@ -77,7 +77,7 @@ public class CsvHandler {
         List<Technician> technicians = new ArrayList<Technician>();
         try {
 
-            in = new BufferedReader(new FileReader("Usuario.csv"));
+            in = new BufferedReader(new FileReader("Tecnico.csv"));
             String line = in.readLine();
             while ((line = in.readLine()) != null) {
                 String[] userInfo = line.split(",");
@@ -93,7 +93,7 @@ public class CsvHandler {
     public static void writeTechniciansCsv(List<User> users) throws IOException {
         PrintWriter out = null;
         try {
-            out = new PrintWriter(new FileWriter("Usuario.csv"));
+            out = new PrintWriter(new FileWriter("Tecnico.csv"));
             out.println("DNI,Name");
             for (User user : users) {
                 out.println(user.getDNI() + "," + user.getName());
@@ -136,5 +136,25 @@ public class CsvHandler {
             }
         }
     }
+
+    public static List<Manager> getManagerCsv() throws IOException {
+        BufferedReader in = null;
+        List<Manager> managers = new ArrayList<Manager>();
+        try {
+
+            in = new BufferedReader(new FileReader("Tecnico.csv"));
+            String line = in.readLine();
+            while ((line = in.readLine()) != null) {
+                String[] userInfo = line.split(",");
+                managers.add(new Manager(userInfo[0], userInfo[1]));
+            }
+        } finally {
+            if (in != null) {
+                in.close();
+            }
+        }
+        return managers;
+    }
+
 
 }
