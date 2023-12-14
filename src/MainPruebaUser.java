@@ -15,7 +15,6 @@ public class MainPruebaUser {
         Technician technician = null;
         Manager manager = null;
         boolean exit = false;
-        userMethod(user);
         while (!exit) {
             boolean selectUser = false;
             while (!selectUser) {
@@ -30,6 +29,7 @@ public class MainPruebaUser {
                     int index = 1;
                     for (User usersWithName : usersByName) {
                         System.out.println(index + " " + usersWithName);
+                        userMethod(user);
                         index++;
                     }
                     for (Technician technicianWithName : techniciansByName) {
@@ -87,16 +87,19 @@ public class MainPruebaUser {
     }
 
     public static Boolean userMethod(User user) throws IOException {
+        boolean b =true;
+        while (b) {
         System.out.println("Please enter any option: (1) View petitions (2) Make petitions (3) EXIT");
         String option = Global.inputKeyboard.next();
-        if (!option.equals("1") && !option.equals("2") && !option.equals("3")){
-            System.out.println("Please enter a valid option");
-        } else if (option.equals("1")) {
+            if (!option.equals("1") && !option.equals("2") && !option.equals("3")) {
+                System.out.println("Please enter a valid option");
+            } else if (option.equals("1")) {
 
-        } else if (option.equals("2")) {
+            } else if (option.equals("2")) {
 
-        } else if (option.equals("3")) {
-            return false;
+            } else if (option.equals("3")) {
+                return false;
+            }
         }
         return true;
     }
