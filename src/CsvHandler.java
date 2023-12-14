@@ -22,7 +22,7 @@ public class CsvHandler {
         return users;
     }
 
-    public static List<ActionRequest> makeActionRequestCsv () throws IOException{
+    public static List<ActionRequest> makeActionRequestCsv() throws IOException{
         BufferedReader input = null;
         List<ActionRequest> petition = new ArrayList<ActionRequest>();
         try {
@@ -124,16 +124,16 @@ public class CsvHandler {
             }
         }
     }
-    public static List<User> getPetitionsCsv() throws IOException {
+    public static List<ActionRequest> getPetitionsCsv() throws IOException {
         BufferedReader in = null;
-        List<User> users = new ArrayList<User>();
+        List<ActionRequest> users = new ArrayList<ActionRequest>();
         try {
-
             in = new BufferedReader(new FileReader("Petición.csv"));
             String line = in.readLine();
             while ((line = in.readLine()) != null) {
                 String[] userInfo = line.split(",");
-                users.add(new User(userInfo[0], userInfo[1], Integer.parseInt(userInfo[2])));
+                users.add(new ActionRequest(Integer.parseInt(userInfo[0]), Integer.parseInt(userInfo[1]),
+                        userInfo[2], userInfo[3], userInfo[4], userInfo[5]));
             }
         } finally {
             if (in != null) {
@@ -162,7 +162,7 @@ public class CsvHandler {
         List<Manager> managers = new ArrayList<Manager>();
         try {
 
-            in = new BufferedReader(new FileReader("Tecnico.csv"));
+            in = new BufferedReader(new FileReader("Gestor de sistemas.csv"));
             String line = in.readLine();
             while ((line = in.readLine()) != null) {
                 String[] userInfo = line.split(",");
