@@ -1,3 +1,5 @@
+import java.io.IOException;
+
 public class ActionRequest {
     private int id_request;
     private int id_category;
@@ -5,9 +7,10 @@ public class ActionRequest {
     private String title;
     private String description;
     private String article;
-//------------------------------------Constructor-----------------------------------------//
-    public ActionRequest (int id_request, int id_category, String id_user, String title,
-                          String description, String article) {
+
+    //------------------------------------Constructor-----------------------------------------//
+    public ActionRequest(int id_request, int id_category, String id_user, String title,
+                         String description, String article) {
         this.id_request = id_request;
         this.id_category = id_category;
         this.id_user = id_user;
@@ -40,7 +43,8 @@ public class ActionRequest {
     public String getArticle() {
         return article;
     }
-//-----------------------------------Setters----------------------------------------------//
+
+    //-----------------------------------Setters----------------------------------------------//
     public void setId_request(int id_request) {
         this.id_request = id_request;
     }
@@ -63,5 +67,17 @@ public class ActionRequest {
 
     public void setArticle(String article) {
         this.article = article;
+    }
+
+    //------------------------------ToString----------------------------------------------------//
+    @Override
+    public String toString() {
+        String s = "";
+        try {
+             s += CsvHandler.getPetitionsCsv().toString();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return s;
     }
 }

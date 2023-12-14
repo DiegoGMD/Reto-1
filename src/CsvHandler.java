@@ -28,6 +28,7 @@ public class CsvHandler {
         try {
             input = new BufferedReader(new FileReader("Petición.csv"));
             String line;
+            input.readLine();
             while ((line = input.readLine()) != null) {
                 String[] items = line.split(",");
                 petition.add(new ActionRequest(Integer.parseInt(items[0]),
