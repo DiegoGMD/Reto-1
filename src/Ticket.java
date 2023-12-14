@@ -1,60 +1,60 @@
 import java.util.Scanner;
 public class Ticket {
     private int id;
-    private String dni_tecnico;
-    private String dni_gestor;
-    private int id_peticion;
-    private String estado;
-    private String titulo;
-    private String descripcion;
+    private String dni_tecnician;
+    private String dni_manager;
+    private int id_petition;
+    private String state;
+    private String rename;
+    private String description;
 
-    public Ticket(int id, String dni_tecnico, String dni_gestor, int id_peticion,
+    public Ticket(int id, String dni_tecnician, String dni_manager, int id_petition,
                   String estado, String titulo, String descripcion) {
         this.id = id;
-        this.dni_tecnico = dni_tecnico;
-        this.dni_gestor = dni_gestor;
-        this.id_peticion = id_peticion;
-        this.estado = estado;
-        this.titulo = titulo;
-        this.descripcion = descripcion;
+        this.dni_tecnician = dni_tecnician;
+        this.dni_manager = dni_manager;
+        this.id_petition = id_petition;
+        this.state = estado;
+        this.rename = titulo;
+        this.description = descripcion;
     }
 
     public Ticket() {
-        id = 0;
-        dni_tecnico = "";
-        dni_gestor = "";
-        id_peticion = 0;
-        estado = "";
-        titulo = "";
-        descripcion = "";
+        id = -1;
+        dni_tecnician = "";
+        dni_manager = "";
+        id_petition = -1;
+        state = "";
+        rename = "";
+        description = "";
     }
 //---Getters------------------------------------------------------------------------------------------------------------
     public int getId() {
         return id;
     }
 
-    public String getDni_tecnico() {
-        return dni_tecnico;
+    public String getDni_tecnician() {
+        return dni_tecnician;
     }
 
-    public String getDni_gestor() {
-        return dni_gestor;
+    public String getDni_manager() {
+        return dni_manager;
     }
 
-    public int getId_peticion() {
-        return id_peticion;
+    public int getId_petition() {
+        return id_petition;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getState() {
+        return state;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getRename() {
+        return rename;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getDescription() {
+        return description;
     }
 //---Setters------------------------------------------------------------------------------------------------------------
 
@@ -62,15 +62,15 @@ public class Ticket {
         this.id = id;
     }
 
-    public void setDni_tecnico(String dni_tecnico) {
-        this.dni_tecnico = dni_tecnico;
+    public void setDni_tecnician(String dni_tecnician) {
+        this.dni_tecnician = dni_tecnician;
     }
 
-    public void setDni_gestor(String dni_gestor) {
-        this.dni_gestor = dni_gestor;
+    public void setDni_manager(String dni_manager) {
+        this.dni_manager = dni_manager;
     }
 
-    public void setId_peticion(int id_peticion) {
+    public void setId_petition(int id_petition) {
 
     }
 
@@ -80,27 +80,38 @@ public class Ticket {
         Scanner input = new Scanner(System.in);
         switch (input.nextInt()){
             case 1:
-                estado = "OPEN";
+                state = "OPEN";
                 break;
             case 2:
-                estado = "CLOSED";
+                state = "CLOSED";
                 break;
             case 3:
-                estado = "SOLVED";
+                state = "SOLVED";
                 break;
         }
-        this.estado = estado;
+        this.state = state;
     }
 
     public void setTitulo() {
         Scanner input = new Scanner(System.in);
         System.out.println("Write below the ticket title:");
-        this.titulo = input.nextLine();
+        this.rename = input.nextLine();
     }
 
-    public void setDescripcion(String descripcion) {
+    public void setDescription(String description) {
         Scanner input = new Scanner(System.in);
         System.out.println("Write below the ticket description:");
-        this.descripcion = input.nextLine();
+        this.description = input.nextLine();
+    }
+//---To-String----------------------------------------------------------------------------------------------------------
+
+    @Override
+    public String toString() {
+        String s = "";
+        s += "ID:" + getId() + "\n" +
+             "Title:" + getRename() + "\n" +
+             "Description:" + getDescription() + "\n" +
+             "State:" + getState();
+        return s;
     }
 }
