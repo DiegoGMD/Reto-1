@@ -39,6 +39,25 @@ public class CsvHandler {
         }
         return inventory;
     }
+
+    public static List<Category> makeCategoryCsv () throws IOException {
+        BufferedReader input = null;
+        List<Category> categoryList = new ArrayList<Category>();
+        try {
+            input = new BufferedReader(new FileReader("Categorias.csv"));
+            String line;
+            while ((line = input.readLine()) != null) {
+                String[] item = line.split(",");
+                categoryList.add(new Category(Integer.parseInt(item[0]), item[1]));
+            }
+        }
+        finally {
+            if (input != null) {
+                input.close();
+            }
+        }
+        return categoryList;
+    }
     public static void writeUsersCsv(List<User> users) throws IOException {
         PrintWriter out = null;
         try {
@@ -58,7 +77,7 @@ public class CsvHandler {
         List<Technician> technicians = new ArrayList<Technician>();
         try {
 
-            in = new BufferedReader(new FileReader("Tecnico.csv"));
+            in = new BufferedReader(new FileReader("Usuario.csv"));
             String line = in.readLine();
             while ((line = in.readLine()) != null) {
                 String[] userInfo = line.split(",");
@@ -74,7 +93,7 @@ public class CsvHandler {
     public static void writeTechniciansCsv(List<User> users) throws IOException {
         PrintWriter out = null;
         try {
-            out = new PrintWriter(new FileWriter("Tecnico.csv"));
+            out = new PrintWriter(new FileWriter("Usuario.csv"));
             out.println("DNI,Name");
             for (User user : users) {
                 out.println(user.getDNI() + "," + user.getName());
