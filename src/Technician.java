@@ -14,6 +14,6 @@ public class Technician {
     }
     @Override
     public String toString() {
-        return ("Technician: " + name + " Dni: " + DNI + " ID_Departament: ");
+        return ("Technician: " + name + " Dni: " + DNI);
     }
 }
