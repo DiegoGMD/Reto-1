@@ -22,6 +22,26 @@ public class CsvHandler {
         return users;
     }
 
+    public static List<ActionRequest> makeActionRequestCsv () throws IOException{
+        BufferedReader input = null;
+        List<ActionRequest> petition = new ArrayList<ActionRequest>();
+        try {
+            input = new BufferedReader(new FileReader("Petición.csv"));
+            String line;
+            while ((line = input.readLine()) != null) {
+                String[] items = line.split(",");
+                petition.add(new ActionRequest(Integer.parseInt(items[0]),
+                        Integer.parseInt(items[1]),Integer.parseInt(items[2]),
+                        items[3], items[4], items[5]));
+            }
+        } finally {
+            if (input != null) {
+                input.close();
+            }
+        }
+        return petition;
+    }
+
     public static  List<Inventory> makeInventory() throws IOException {
         BufferedReader input = null;
         List<Inventory> inventory = new ArrayList<Inventory>();
