@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.List;
 
 public class ActionRequest {
     private int id_request;
@@ -74,7 +75,10 @@ public class ActionRequest {
     public String toString() {
         String s = "";
         try {
-             s += CsvHandler.getPetitionsCsv().toString();
+             List<ActionRequest> petitions = CsvHandler.makeActionRequestCsv();
+             for (ActionRequest request : petitions) {
+                 s += request + "\n";
+             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
