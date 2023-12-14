@@ -4,12 +4,12 @@ public class Ticket {
     private String dni_tecnician;
     private String dni_manager;
     private int id_petition;
-    private Status state;
+    private String state;
     private String title;
     private String description;
 
     public Ticket(int id, String dni_tecnician, String dni_manager, int id_petition,
-                  Status state, String title, String description) {
+                  String state, String title, String description) {
         this.id = id;
         this.dni_tecnician = dni_tecnician;
         this.dni_manager = dni_manager;
@@ -24,7 +24,7 @@ public class Ticket {
         dni_tecnician = "";
         dni_manager = "";
         id_petition = -1;
-        state = null;
+        state = "";
         title = "";
         description = "";
     }
@@ -45,7 +45,7 @@ public class Ticket {
         return id_petition;
     }
 
-    public Status getState() {
+    public String getState() {
         return state;
     }
 
@@ -80,13 +80,13 @@ public class Ticket {
         Scanner input = new Scanner(System.in);
         switch (input.nextInt()){
             case 1:
-                state = Status.OPEN;
+                state = "OPEN";
                 break;
             case 2:
-                state = Status.SOLVED;
+                state = "SOLVED";
                 break;
             case 3:
-                state = Status.CLOSED;
+                state = "CLOSED";
                 break;
         }
         this.state = state;
