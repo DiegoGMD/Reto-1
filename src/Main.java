@@ -69,10 +69,29 @@ public class Main {
                 }
 
             }
+            if (technician != null) {
+                exit = technicianMethod(technician);
+            } else if (user != null) {
+                exit = userMethod(user);
+            } else {
+                exit = managerMethod(manager);
+            }
         }
 
 
 
+    }
+
+    public static Boolean managerMethod(Manager manager) {
+        return  true;
+    }
+
+    public static Boolean userMethod(User user) {
+        return  true;
+    }
+
+    public static Boolean technicianMethod(Technician technician) {
+        return  true;
     }
 
 }
