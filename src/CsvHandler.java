@@ -162,7 +162,7 @@ public class CsvHandler {
         List<Manager> managers = new ArrayList<Manager>();
         try {
 
-            in = new BufferedReader(new FileReader("Tecnico.csv"));
+            in = new BufferedReader(new FileReader("Gestor de sistemas.csv"));
             String line = in.readLine();
             while ((line = in.readLine()) != null) {
                 String[] userInfo = line.split(",");
