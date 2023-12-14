@@ -4,19 +4,19 @@ public class Ticket {
     private String dni_tecnician;
     private String dni_manager;
     private int id_petition;
-    private String state;
-    private String rename;
+    private Status state;
+    private String title;
     private String description;
 
     public Ticket(int id, String dni_tecnician, String dni_manager, int id_petition,
-                  String estado, String titulo, String descripcion) {
+                  Status state, String title, String description) {
         this.id = id;
         this.dni_tecnician = dni_tecnician;
         this.dni_manager = dni_manager;
         this.id_petition = id_petition;
-        this.state = estado;
-        this.rename = titulo;
-        this.description = descripcion;
+        this.state = state;
+        this.title = title;
+        this.description = description;
     }
 
     public Ticket() {
@@ -24,8 +24,8 @@ public class Ticket {
         dni_tecnician = "";
         dni_manager = "";
         id_petition = -1;
-        state = "";
-        rename = "";
+        state = null;
+        title = "";
         description = "";
     }
 //---Getters------------------------------------------------------------------------------------------------------------
@@ -45,12 +45,12 @@ public class Ticket {
         return id_petition;
     }
 
-    public String getState() {
+    public Status getState() {
         return state;
     }
 
-    public String getRename() {
-        return rename;
+    public String getTitle() {
+        return title;
     }
 
     public String getDescription() {
@@ -76,17 +76,17 @@ public class Ticket {
 
     public void setEstado() {
         System.out.println("Select the state of the ticket:" + "\n" +
-                            "1.OPEN" + "\t" + "2.CLOSED" + "\t" + "3.SOLVED");
+                            "1.OPEN" + "\t" + "2.SOLVED" + "\t" + "3.CLOSED");
         Scanner input = new Scanner(System.in);
         switch (input.nextInt()){
             case 1:
-                state = "OPEN";
+                state = Status.OPEN;
                 break;
             case 2:
-                state = "CLOSED";
+                state = Status.SOLVED;
                 break;
             case 3:
-                state = "SOLVED";
+                state = Status.CLOSED;
                 break;
         }
         this.state = state;
@@ -95,7 +95,7 @@ public class Ticket {
     public void setTitulo() {
         Scanner input = new Scanner(System.in);
         System.out.println("Write below the ticket title:");
-        this.rename = input.nextLine();
+        this.title = input.nextLine();
     }
 
     public void setDescription(String description) {
@@ -109,7 +109,7 @@ public class Ticket {
     public String toString() {
         String s = "";
         s += "ID:" + getId() + "\n" +
-             "Title:" + getRename() + "\n" +
+             "Title:" + getTitle() + "\n" +
              "Description:" + getDescription() + "\n" +
              "State:" + getState();
         return s;
