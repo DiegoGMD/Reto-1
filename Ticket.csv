@@ -1,0 +1,5 @@
+ID Categoría,DNI Técnico,DNI Gestor,ID Petición,Estado,Título,Descripción
+1,18273456A,87654321A,1,No resuelto,Desconexion con el servidor,Estaba subiendo datos y de un momento a otro se me ha desconectado del servidor
+2,18273456D,87654321D,2,No resuelto,No funciona el correo,Cuando intento enviar correos se queda cargando y nunca llega a enviarse
+3,18273456R,87654321R,3,No resuelto,No me funciona el teclado,Llevo un rato intentando utilizar el teclado pero este no funciona
+4,18273456S,87654321S,4,No resuelto,No enciende el router,Al encender el router este no responde y no se enciende

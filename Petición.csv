@@ -1,0 +1,5 @@
+ID,ID Categoría,ID Usuario,Título,Descripción,Equipo
+1,4,12345678A,Fallo de monitor,El monitor no da señal teniendo conexión energética,Monitor_Marketing
+2,15,12345678D,Problema interno en la torre,Parece que hay algun ventilador que no funciona con normalidad,Torre_Administrativo
+3,7,12345678R,Fallo de teclado,Hay algunas teclas que no funcionan bien,MouseTeclado_Ventas
+4,11,12345678S,El router no responde,Al encender el router este no responde y esta recibiendo energia,Router
