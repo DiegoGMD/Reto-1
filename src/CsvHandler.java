@@ -31,7 +31,7 @@ public class CsvHandler {
             while ((line = input.readLine()) != null) {
                 String[] items = line.split(",");
                 petition.add(new ActionRequest(Integer.parseInt(items[0]),
-                        Integer.parseInt(items[1]),Integer.parseInt(items[2]),
+                        Integer.parseInt(items[1]),items[2],
                         items[3], items[4], items[5]));
             }
         } finally {

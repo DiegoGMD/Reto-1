@@ -1,12 +1,12 @@
 public class ActionRequest {
     private int id_request;
     private int id_category;
-    private int id_user;
+    private String id_user;
     private String title;
     private String description;
     private String article;
 
-    public ActionRequest (int id_request, int id_category, int id_user, String title,
+    public ActionRequest (int id_request, int id_category, String id_user, String title,
                           String description, String article) {
         this.id_request = id_request;
         this.id_category = id_category;
