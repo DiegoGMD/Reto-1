@@ -180,7 +180,7 @@ public class MainPruebasManager {
                 if (!option2.equals("1") && !option2.equals("2")) {
                     System.out.println("Please enter a valid option");
                 } else if (option2.equals("1")) {
-                    int cod_category = Category.getCategory();
+                    int cod_category = Category.selectCategory();
                     System.out.println("Write the title of the petition according to the id request: ");
                     Global.inputKeyboard.nextLine();
                     String title = Global.inputKeyboard.nextLine();
@@ -197,7 +197,7 @@ public class MainPruebasManager {
                     ticket.setId();
                     System.out.println("Which technician do you want to assign it to?");
 
-
+                    ticket.setDni_manager(manager.getDNI());
                     System.out.println("Which petition is referencing this ticket?");
                     Global.inputKeyboard.nextInt();
                     System.out.println(ticket);

@@ -69,11 +69,11 @@ public class Ticket {
         this.id = counter;
     }
 
-    public void setDni_tecnician() {
+    public void setDni_technician(String dni_technician) {
         this.dni_technician = dni_technician;
     }
 
-    public void setDni_manager() {
+    public void setDni_manager(String dni_manager) {
         this.dni_manager = dni_manager;
     }
 

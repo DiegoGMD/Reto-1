@@ -55,6 +55,28 @@ public class ActionRequest {
         return article;
     }
 
+
+    public static String selectArticle() throws IOException {
+        List<Inventory> inventory = CsvHandler.makeInventory();
+        String s = "";
+        while (s.isEmpty()) {
+            System.out.println("Choose the code of the Hardware involved");
+            for (Inventory inventoryItem : inventory) {
+                System.out.println(inventoryItem);
+            }
+            String cod_article = Global.inputKeyboard.nextLine();
+            for (Inventory inventoryItem : inventory) {
+                if (inventoryItem.getCod_serie().equals(cod_article)) {
+                    s += inventoryItem.getArticles();
+                }
+            }
+        }
+        return s;
+    }
+
+
+
+
     public static String getArticle() throws IOException {
             String s = "";
             boolean b = false;

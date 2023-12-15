@@ -6,6 +6,8 @@ import java.util.Scanner;
 public class Main {
     public static final String Divider = "-------------------------------------------------------------------------------------------";
     public static void main(String[] args) throws IOException {
+        Ticket ticket = new Ticket();
+        ticket.setId();
 
         List<User> users = new ArrayList<>();
         List<Technician> technicians = new ArrayList<>();
