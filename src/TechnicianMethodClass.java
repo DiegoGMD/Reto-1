@@ -111,7 +111,7 @@ public class TechnicianMethodClass {
             }
             System.out.println("Your Tickets:");
             for (Ticket ticket : tickets) {
-                if (tickets.contains(technician.getDNI())){
+                if (ticket.getDni_tecnician().contains(technician.getDNI())){
                     System.out.println(ticket);
                 }
             }
