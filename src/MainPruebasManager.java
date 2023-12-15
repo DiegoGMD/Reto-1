@@ -111,34 +111,64 @@ public class MainPruebasManager {
                 if (!option2.equals("1") && !option2.equals("2")) {
                     System.out.println("Please enter a valid option");
                 } else if (option2.equals("1")) {
+                    List<ActionRequest> requests = CsvHandler.getPetitionsCsv();
                     System.out.println("Which request do you want to modify?");
-
+                    int idRequest = Global.inputKeyboard.nextInt();
+                    while (true) {
+                        for (ActionRequest request : requests) {
+                            if (idRequest == request.getId_request()) {
+                                System.out.println("What do you want to modify: ID_Category(1), Title(2), Description(3), Inventory(4) or EXIT(5)?");
+                                int modifyOption = Global.inputKeyboard.nextInt();
+                                switch (modifyOption) {
+                                    default:
+                                        System.out.println("Please enter a valid option");
+                                    case 1:
+                                        request.setId_category(Category.getCategory());
+                                        break;
+                                    case 2:
+                                        request.setTitle();
+                                        break;
+                                    case 3:
+                                        request.setDescription();
+                                        break;
+                                    case 4:
+                                        request.getArticle();
+                                        break;
+                                    case 5:
+                                        return false;
+                                }
+                                CsvHandler.writePetitionCsv(requests);
+                            }
+                        }
+                    }
                 } else {
+                    List<Ticket> tickets = CsvHandler.getTicketsCsv();
                     System.out.println("Which ticket do you want to modify?");
                     int idTicket = Global.inputKeyboard.nextInt();
                     while (true) {
-                        for (Ticket tickets : CsvHandler.getTicketsCsv()) {
-                            if (idTicket == tickets.getId()) {
+                        for (Ticket ticket : tickets) {
+                            if (idTicket == ticket.getId()) {
                                 System.out.println("What do you want to modify: Title(1), Description(2), Technician DNI(3), State(4) or EXIT(5)?");
                                 int modifyOption = Global.inputKeyboard.nextInt();
                                 switch (modifyOption) {
                                     default:
                                         System.out.println("Please enter a valid option");
                                     case 1:
-                                        tickets.setTitle();
+                                        ticket.setTitle();
                                         break;
                                     case 2:
-                                        tickets.setDescription();
+                                        ticket.setDescription();
                                         break;
                                     case 3:
-                                        tickets.setDni_tecnician();
+                                        ticket.setDni_tecnician();
                                         break;
                                     case 4:
-                                        tickets.setState();
+                                        ticket.setState();
                                         break;
                                     case 5:
                                         return false;
                                 }
+                                CsvHandler.writeTicketsCsv(tickets);
                             }
                         }
                     }
