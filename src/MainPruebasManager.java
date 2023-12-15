@@ -197,8 +197,9 @@ public class MainPruebasManager {
                     ticket.setId();
                     System.out.println("Which technician do you want to assign it to?");
 
-                    ticket.getDni_manager(manager.getDNI());
 
+                    System.out.println("Which petition is referencing this ticket?");
+                    Global.inputKeyboard.nextInt();
                     System.out.println(ticket);
                 }
             } else {
