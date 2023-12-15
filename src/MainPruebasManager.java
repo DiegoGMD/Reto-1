@@ -94,7 +94,9 @@ public class MainPruebasManager {
             } else if (option.equals("1")) {
                 System.out.println("You want to consult requests(1) or tickets(2)?");
                 option2 = Global.inputKeyboard.next();
-                if (option2.equals("1")) {
+                if (!option2.equals("1") && !option2.equals("2")) {
+                    System.out.println("Please enter a valid option");
+                } else if (option2.equals("1")) {
                     for (ActionRequest requests : CsvHandler.getPetitionsCsv()) {
                         System.out.println(requests);
                     }
@@ -106,9 +108,51 @@ public class MainPruebasManager {
             } else if (option.equals("2")) {
                 System.out.println("You want to modify requests(1) or tickets(2)?");
                 option2 = Global.inputKeyboard.next();
+                if (!option2.equals("1") && !option2.equals("2")) {
+                    System.out.println("Please enter a valid option");
+                } else if (option2.equals("1")) {
+                    System.out.println("Which request do you want to modify?");
+
+                } else {
+                    System.out.println("Which ticket do you want to modify?");
+                    int idTicket = Global.inputKeyboard.nextInt();
+                    while (true) {
+                        for (Ticket tickets : CsvHandler.getTicketsCsv()) {
+                            if (idTicket == tickets.getId()) {
+                                System.out.println("What do you want to modify: Title(1), Description(2), Technician DNI(3), State(4) or EXIT(5)?");
+                                int modifyOption = Global.inputKeyboard.nextInt();
+                                switch (modifyOption) {
+                                    default:
+                                        System.out.println("Please enter a valid option");
+                                    case 1:
+                                        tickets.setTitle();
+                                        break;
+                                    case 2:
+                                        tickets.setDescription();
+                                        break;
+                                    case 3:
+                                        tickets.setDni_tecnician();
+                                        break;
+                                    case 4:
+                                        tickets.setState();
+                                        break;
+                                    case 5:
+                                        return false;
+                                }
+                            }
+                        }
+                    }
+                }
             } else if (option.equals("3")) {
                 System.out.println("You want to create request(1) or ticket(2)?");
                 option2 = Global.inputKeyboard.next();
+                if (!option2.equals("1") && !option2.equals("2")) {
+                    System.out.println("Please enter a valid option");
+                } else if (option2.equals("1")) {
+
+                } else {
+
+                }
             } else {
                 return false;
             }

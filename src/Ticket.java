@@ -62,17 +62,17 @@ public class Ticket {
         this.id = id;
     }
 
-    public void setDni_tecnician(String dni_tecnician) {
+    public void setDni_tecnician() {
         this.dni_tecnician = dni_tecnician;
     }
 
-    public void setDni_manager(String dni_manager) {
+    public void setDni_manager() {
         this.dni_manager = dni_manager;
     }
 
-    public void setId_petition(int id_petition) {}
+    public void setId_petition() {}
 
-    public String setSolution(String message) {
+    public String setSolution(String message) { //To be optimized
         description += "\n" + "Solution: " + message;
         return description;
     }
@@ -101,7 +101,7 @@ public class Ticket {
         this.title = input.nextLine();
     }
 
-    public void setDescription(String description) {
+    public void setDescription() {
         Scanner input = new Scanner(System.in);
         System.out.println("Write below the ticket description:");
         this.description = input.nextLine();
