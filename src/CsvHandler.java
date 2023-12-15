@@ -28,6 +28,7 @@ public class CsvHandler {
         try {
             input = new BufferedReader(new FileReader("Petición.csv"));
             String line;
+            input.readLine();
             while ((line = input.readLine()) != null) {
                 String[] items = line.split(",");
                 petition.add(new ActionRequest(Integer.parseInt(items[0]),
@@ -64,8 +65,9 @@ public class CsvHandler {
         BufferedReader input = null;
         List<Category> categoryList = new ArrayList<Category>();
         try {
-            input = new BufferedReader(new FileReader("Categorias.csv"));
+            input = new BufferedReader(new FileReader("Categorías.csv"));
             String line;
+            input.readLine();
             while ((line = input.readLine()) != null) {
                 String[] item = line.split(",");
                 categoryList.add(new Category(Integer.parseInt(item[0]), item[1]));
