@@ -101,7 +101,20 @@ public class TechnicianMethodClass {
         return tickets;
     }
     public static Boolean technicianMethod(Technician technician) throws IOException {
-        System.out.println(getTicketsCsv() + "\n");
+        System.out.println("\n" + "You have selected:" + "\n" + technician + "\n");
+        allTicketsPrinter();
         return  true;
+    }
+
+    private static void allTicketsPrinter() throws IOException {
+        List<Ticket> tickets = getTicketsCsv();
+        if (tickets.isEmpty()) {
+            System.out.println("No tickets available.");
+        } else {
+            System.out.println("All Tickets:");
+            for (Ticket ticket : tickets) {
+                System.out.println(ticket);
+            }
+        }
     }
 }
