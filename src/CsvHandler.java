@@ -178,5 +178,25 @@ public class CsvHandler {
         return managers;
     }
 
+    public static List<Ticket> getTicketsCsv() throws IOException {
+        BufferedReader in = null;
+        List<Ticket> tickets = new ArrayList<Ticket>();
+        try {
+
+            in = new BufferedReader(new FileReader("Ticket.csv"));
+            String line = in.readLine();
+            while ((line = in.readLine()) != null) {
+                String[] ticketInfo = line.split(",");
+                tickets.add(new Ticket(Integer.valueOf(ticketInfo[0]), ticketInfo[1], ticketInfo[2],
+                        Integer.valueOf(ticketInfo[3]), ticketInfo[4], ticketInfo[5], ticketInfo[6]));
+            }
+        } finally {
+            if (in != null) {
+                in.close();
+            }
+        }
+        return tickets;
+    }
+
 
 }
