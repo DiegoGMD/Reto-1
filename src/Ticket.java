@@ -70,8 +70,11 @@ public class Ticket {
         this.dni_manager = dni_manager;
     }
 
-    public void setId_petition(int id_petition) {
+    public void setId_petition(int id_petition) {}
 
+    public String setSolution(String message) {
+        description += "\n" + "Solution: " + message;
+        return description;
     }
 
     public void setState() {

@@ -3,6 +3,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.Scanner;
 
 public class TechnicianMethodClass {
     public static void main(String[] args) throws IOException {
@@ -102,24 +104,41 @@ public class TechnicianMethodClass {
     }
     public static Boolean technicianMethod(Technician technician) throws IOException {
         List<Ticket> tickets = getTicketsCsv();
+        Scanner scan = new Scanner(System.in);
+        String text = "";
         if (tickets.isEmpty()) {
             System.out.println("No tickets available.");
         } else {
-            System.out.println("All Tickets:");
-            for (Ticket ticket : tickets) {
-                System.out.println(ticket);
-            }
             System.out.println("Your Tickets:");
             for (Ticket ticket : tickets) {
                 if (ticket.getDni_tecnician().contains(technician.getDNI())){
                     System.out.println(ticket);
                 }
             }
+            System.out.println("Do you want to edit one of your tickets?" + "\n" + "Type: S or N");
+            text = scan.nextLine().toUpperCase();
+            if (text.equals("S")){
+                text = "";
+                System.out.println("Tell me the ID of the ticket");
+                text = scan.nextLine();
+                System.out.println("You have selected the ticket with the ID " + text);
+                for (Ticket ticket : tickets) {
+                    if (ticket.getDni_tecnician().contains(technician.getDNI())){
+                        if (ticket.getId() == Integer.parseInt(text)){
+                            System.out.println(ticket);
+                            ticket.setState();
+                            System.out.println("Introduce an explanation of how you solved the problem");
+                            text =  scan.nextLine();
+                            ticket.setSolution(text);
+                            System.out.println("Result:" + "\n" + ticket);
+                        }
+                    }
+                }
+            }
+            else {
+                System.out.print("CLOSING");
+            }
         }
         return  true;
-    }
-
-    private static void allTicketsPrinter() throws IOException {
-
     }
 }
