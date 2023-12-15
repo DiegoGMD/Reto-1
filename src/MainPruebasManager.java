@@ -173,14 +173,33 @@ public class MainPruebasManager {
                     }
                 }
             } else if (option.equals("3")) {
+                List<ActionRequest> petitions = CsvHandler.getPetitionsCsv();
+                int IDPetition = 5;
                 System.out.println("You want to create request(1) or ticket(2)?");
                 option2 = Global.inputKeyboard.next();
                 if (!option2.equals("1") && !option2.equals("2")) {
                     System.out.println("Please enter a valid option");
                 } else if (option2.equals("1")) {
-
+                    int cod_category = Category.getCategory();
+                    System.out.println("Write the title of the petition according to the id request: ");
+                    Global.inputKeyboard.nextLine();
+                    String title = Global.inputKeyboard.nextLine();
+                    System.out.println("Write a short description of the problem: ");
+                    String description = Global.inputKeyboard.nextLine();
+                    String article = ActionRequest.getArticle();
+                    ActionRequest petition = new ActionRequest(IDPetition, cod_category, manager.getDNI(),title, description,article);
+                    System.out.println(petition);
+                    petitions.add(petition);
+                    IDPetition++;
+                    CsvHandler.writePetitionCsv(petitions);
                 } else {
+                    Ticket ticket = new Ticket();
+                    ticket.setId();
+                    System.out.println("Which technician do you want to assign it to?");
 
+                    ticket.getDni_manager(manager.getDNI());
+
+                    System.out.println(ticket);
                 }
             } else {
                 return false;
