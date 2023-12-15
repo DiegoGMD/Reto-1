@@ -51,8 +51,75 @@ public class ActionRequest {
         return description;
     }
 
-    public String getArticle() {
-        return article;
+    public static String getArticle() throws IOException {
+            String s = "";
+            boolean b = false;
+            while (!b) {
+                b = true;
+                System.out.println("Choose the code of the Hardware involved");
+                System.out.println(CsvHandler.makeInventory());
+                String cod_article = Global.inputKeyboard.nextLine();
+                switch (cod_article) {
+                    case "1":
+                        s += "Server";
+                        break;
+                    case "2":
+                        s += "Router";
+                        break;
+                    case "3A":
+                        s += "Switch_Sales";
+                        break;
+                    case "3B":
+                        s += "Switch_Marketing";
+                        break;
+                    case "3C":
+                        s += "Switch_Accounting";
+                        break;
+                    case "3D":
+                        s += "Switch_Administrative";
+                        break;
+                    case "4A.1":
+                        s += "Tower_Sales";
+                        break;
+                    case "4B.1":
+                        s += "Tower_Marketing";
+                        break;
+                    case "4C.1":
+                        s += "Tower_Accounting";
+                        break;
+                    case "4D.1":
+                        s += "Tower_Administrative";
+                        break;
+                    case "5A.1":
+                        s += "Monitor_Sales";
+                        break;
+                    case "5B.1":
+                        s += "Monitor_Marketing";
+                        break;
+                    case "5C.1":
+                        s += "Monitor_Accounting";
+                        break;
+                    case "5D.1":
+                        s += "Monitor_Administrative";
+                        break;
+                    case "6A.1":
+                        s += "MouseKeyboard_Sales";
+                        break;
+                    case "6B.1":
+                        s += "MouseKeyboard_Marketing";
+                        break;
+                    case "6C.1":
+                        s += "MouseKeyboard_Accounting";
+                        break;
+                    case "6D.1":
+                        s += "MouseKeyboard_Administrative";
+                        break;
+                    default:
+                        System.out.println("Please enter a valid option");;
+                        b = false;
+                }
+            }
+        return s;
     }
 
     //-----------------------------------Setters----------------------------------------------//

@@ -86,6 +86,7 @@ public class MainPruebaUser {
     }
 
     public static Boolean userMethod(User user) throws IOException {
+        List<ActionRequest> petition = CsvHandler.getPetitionsCsv();
         boolean b =true;
         int IDPetition = 5;
         while (b) {
@@ -96,19 +97,17 @@ public class MainPruebaUser {
             } else if (option.equals("1")) {
                 System.out.println(CsvHandler.makeActionRequestCsv());
             } else if (option.equals("2")) {
-                System.out.println("Please enter id_request :");
-                System.out.println(CsvHandler.makeCategoryCsv());
-                int cod_category = Global.inputKeyboard.nextInt();
+                int cod_category = Category.getCategory();
                 System.out.println("Write the title of the petition accodring to the id request: ");
                 Global.inputKeyboard.nextLine();
                 String title = Global.inputKeyboard.nextLine();
                 System.out.println("Write a short description of the problem");
                 String description = Global.inputKeyboard.nextLine();
-                System.out.println("Choose the code of the Hardware involved");
-                System.out.println(CsvHandler.makeInventory());
-                String cod_Article = Global.inputKeyboard.nextLine();
-                ActionRequest peitition = new ActionRequest(IDPetition, cod_category, user.getDNI(),title, description,cod_Article);
+                String article = ActionRequest.getArticle();
+                ActionRequest peitition = new ActionRequest(IDPetition, cod_category, user.getDNI(),title, description,article);
                 System.out.println(peitition);
+                petition.add(peitition);
+                IDPetition ++;
             } else if (option.equals("3")) {
                 return false;
             }
