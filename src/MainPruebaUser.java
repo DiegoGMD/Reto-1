@@ -106,6 +106,7 @@ public class MainPruebaUser {
                 System.out.println("Choose the code of the Hardware involved");
                 System.out.println(CsvHandler.makeInventory());
                 String cod_Article = Global.inputKeyboard.next();
+
             } else if (option.equals("3")) {
                 return false;
             }
