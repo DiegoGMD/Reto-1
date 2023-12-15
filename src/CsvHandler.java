@@ -166,7 +166,7 @@ public class CsvHandler {
             out = new PrintWriter(new FileWriter("ActionRequest.csv"));
             out.println("ID,ID_Category,ID_User,Title,Description,Inventory");
             for (ActionRequest user : users) {
-                out.println(user.getDNI() + "," + user.getName() + "," + user.getId_dep());
+                out.println(user.getId_request() + "," + user.getId_category() + "," + user.getId_user() + "," + user.getTitle() + "," + user.getDescription() + "," + user.realGetArticle());
             }
         } finally {
             if (out != null) {

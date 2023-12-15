@@ -51,6 +51,10 @@ public class ActionRequest {
         return description;
     }
 
+    public String realGetArticle() {
+        return article;
+    }
+
     public static String getArticle() throws IOException {
             String s = "";
             boolean b = false;
