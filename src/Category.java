@@ -15,69 +15,24 @@ public class Category {
         cod_category = -1;
         category = "";
     }
-
 //-------------------------------Methods----------------------------------------------------//
     public static int selectCategory() throws IOException {
         int cod_category = -1;
-        boolean b = false;
-        while (!b) {
-            b = true;
-            List<Category> categories = CsvHandler.makeCategoryCsv();
-            System.out.println("Categories:");
-            for (Category category1 : categories) {
-                System.out.println(category1);
-            }
-            System.out.println("Please enter id_request :");
-            cod_category = Global.inputKeyboard.nextInt();
-            switch (cod_category) {
-                case 1:
-                    cod_category = 1;
-                    break;
-                case 2:
-                    cod_category = 2;
-                    break;
-                case 3:
-                    cod_category = 3;
-                    break;
-                case 4:
-                    cod_category = 4;
-                    break;
-                case 5:
-                    cod_category = 5;
-                    break;
-                case 6:
-                    cod_category = 6;
-                    break;
-                case 7:
-                    cod_category = 7;
-                    break;
-                case 8:
-                    cod_category = 8;
-                    break;
-                case 9:
-                    cod_category = 9;
-                    break;
-                case 10:
-                    cod_category = 10;
-                    break;
-                case 11:
-                    cod_category = 11;
-                    break;
-                case 12:
-                    cod_category = 12;
-                    break;
-                case 13:
-                    cod_category = 13;
-                    break;
-                case 14:
-                    cod_category = 14;
-                    break;
-                case 15:
-                    cod_category = 15;
-                    break;
-                default:
-                    System.out.println("Enter a valid option");
-                    b = false;
+
+        List<Category> categories = CsvHandler.makeCategoryCsv();
+        System.out.println("Categories:");
+        for (Category category1 : categories) {
+            System.out.println(category1);
+        }
+        Boolean correct = false;
+        System.out.println("Please enter id_request :");
+        cod_category = Global.inputKeyboard.nextInt();
+        while (!correct){
+            if (cod_category > 15 || cod_category < 1){
+                System.out.println("Enter a valid option" + "\n" + "Please enter id_request :");
+                cod_category = Global.inputKeyboard.nextInt();
+            } else {
+                correct = true;
             }
         }
         return cod_category;
