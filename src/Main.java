@@ -125,7 +125,7 @@ public static Boolean managerMethod(Manager manager) {
                     }
                 }
             } else if (option.equals("2")) {
-                makePetitions(user, IDPetition, petitions);
+                makePetitionsUser(user, IDPetition, petitions);
                 IDPetition ++;
             } else if (option.equals("3")) {
                 return false;
@@ -134,15 +134,29 @@ public static Boolean managerMethod(Manager manager) {
         return true;
     }
 
-    private static void makePetitions(User user, int IDPetition, List<ActionRequest> petitions) throws IOException {
+    private static void makePetitionsUser(User user, int IDPetition, List<ActionRequest> petitions) throws IOException {
         int cod_category = Category.selectCategory();
-        System.out.println("Write the title of the petition accodring to the id request: ");
+        System.out.println("Write the title of the petition according to the id request: ");
         Global.inputKeyboard.nextLine();
         String title = Global.inputKeyboard.nextLine();
         System.out.println("Write a short description of the problem");
         String description = Global.inputKeyboard.nextLine();
         String article = ActionRequest.selectArticle();
         ActionRequest petition = new ActionRequest(IDPetition, cod_category, user.getDNI(),title, description,article);
+        System.out.println(petition);
+        petitions.add(petition);
+        CsvHandler.writePetitionCsv(petitions);
+    }
+
+    private static void makePetitionsManager(Manager manager, int IDPetition, List<ActionRequest> petitions) throws IOException {
+        int cod_category = Category.selectCategory();
+        System.out.println("Write the title of the petition according to the id request: ");
+        Global.inputKeyboard.nextLine();
+        String title = Global.inputKeyboard.nextLine();
+        System.out.println("Write a short description of the problem");
+        String description = Global.inputKeyboard.nextLine();
+        String article = ActionRequest.selectArticle();
+        ActionRequest petition = new ActionRequest(IDPetition, cod_category, manager.getDNI(),title, description,article);
         System.out.println(petition);
         petitions.add(petition);
         CsvHandler.writePetitionCsv(petitions);

@@ -131,7 +131,7 @@ public class MainPruebasManager {
                                         request.setDescription();
                                         break;
                                     case 4:
-                                        request.getArticle();
+                                        request.selectArticle();
                                         break;
                                     case 5:
                                         return false;
@@ -180,18 +180,8 @@ public class MainPruebasManager {
                 if (!option2.equals("1") && !option2.equals("2")) {
                     System.out.println("Please enter a valid option");
                 } else if (option2.equals("1")) {
-                    int cod_category = Category.selectCategory();
-                    System.out.println("Write the title of the petition according to the id request: ");
-                    Global.inputKeyboard.nextLine();
-                    String title = Global.inputKeyboard.nextLine();
-                    System.out.println("Write a short description of the problem: ");
-                    String description = Global.inputKeyboard.nextLine();
-                    String article = ActionRequest.getArticle();
-                    ActionRequest petition = new ActionRequest(IDPetition, cod_category, manager.getDNI(),title, description,article);
-                    System.out.println(petition);
-                    petitions.add(petition);
+                    makePetitionsManager(manager, IDPetition, petitions);
                     IDPetition++;
-                    CsvHandler.writePetitionCsv(petitions);
                 } else {
                     Ticket ticket = new Ticket();
                     ticket.setId();
@@ -211,6 +201,20 @@ public class MainPruebasManager {
             }
         }
         return true;
+    }
+
+    private static void makePetitionsManager(Manager manager, int IDPetition, List<ActionRequest> petitions) throws IOException {
+        int cod_category = Category.selectCategory();
+        System.out.println("Write the title of the petition according to the id request: ");
+        Global.inputKeyboard.nextLine();
+        String title = Global.inputKeyboard.nextLine();
+        System.out.println("Write a short description of the problem");
+        String description = Global.inputKeyboard.nextLine();
+        String article = ActionRequest.selectArticle();
+        ActionRequest petition = new ActionRequest(IDPetition, cod_category, manager.getDNI(),title, description,article);
+        System.out.println(petition);
+        petitions.add(petition);
+        CsvHandler.writePetitionCsv(petitions);
     }
     public static Boolean userMethod(User user) {
         return  true;
