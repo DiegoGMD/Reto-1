@@ -69,6 +69,13 @@ public class Main {
                     } else {
                         selectUser = true;
                     }
+                    System.out.println("If you want to Exit press 1, if you want to login with another user press other key");
+                    String strExit = Global.inputKeyboard.next();
+                    if (strExit.equals("1")) {
+                        exit = true;
+                    }
+
+
 
                 }
 
@@ -80,6 +87,7 @@ public class Main {
             } else {
                 exit = managerMethod(manager);
             }
+
         }
 
 
