@@ -16,7 +16,7 @@ public class Category {
         category = "";
     }
 
-//-------------------------------Getters----------------------------------------------------//
+//-------------------------------Methods----------------------------------------------------//
     public static int selectCategory() throws IOException {
         int cod_category = -1;
         boolean b = false;
@@ -82,7 +82,7 @@ public class Category {
         }
         return cod_category;
     }
-
+//-------------------------------Getters----------------------------------------------------//
     public int getCod_category() {
         return cod_category;
     }

@@ -112,20 +112,16 @@ public class MainPruebaUser {
 
     private static void makePetitions(User user, int IDPetition, List<ActionRequest> petitions) throws IOException {
         int cod_category = Category.selectCategory();
-        for (ActionRequest petition : petitions) {
-            if (petition.getId_user().equals(user.getDNI())){
-                System.out.println(petition);
-            }
-        }
         System.out.println("Write the title of the petition accodring to the id request: ");
         Global.inputKeyboard.nextLine();
         String title = Global.inputKeyboard.nextLine();
         System.out.println("Write a short description of the problem");
         String description = Global.inputKeyboard.nextLine();
-        String article = ActionRequest.getArticle();
+        String article = ActionRequest.selectArticle();
         ActionRequest petition = new ActionRequest(IDPetition, cod_category, user.getDNI(),title, description,article);
         System.out.println(petition);
         petitions.add(petition);
+        CsvHandler.writePetitionCsv(petitions);
     }
 
     public static Boolean technicianMethod(Technician technician) {
