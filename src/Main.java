@@ -7,7 +7,7 @@ import java.util.Scanner;
 import java.util.logging.Handler;
 
 public class Main {
-    public static final String Divider = "--------------------------------------------------------------------------";
+    public static final String Divider = "-------------------------------------------------------------------------------------------";
     public static void main(String[] args) throws IOException {
 
         List<User> users = new ArrayList<>();
@@ -24,7 +24,7 @@ public class Main {
             boolean selectUser = false;
             while (!selectUser) {
                 System.out.println(Divider);
-                System.out.println("Welcome to the Ticket Management System, please write the name of your user or type Create to make a new user:");
+                System.out.println("Welcome to the Ticket Management System, please write the name of your user:");
                 String nameUser = Global.inputKeyboard.next();
                 if (nameUser.toUpperCase().equals("CREATE")) {
                     CsvHandler.writeUsersCsv(users);
@@ -52,6 +52,7 @@ public class Main {
                         System.out.println(Divider);
                         System.out.println("Input the name of the number of the User of technician you want to use");
                         int numIndex = Global.inputKeyboard.nextInt();
+                        System.out.println(Divider);
                         index = 1;
                         for (User usersWithName : usersByName) {
                             if (index == numIndex) {
@@ -128,21 +129,27 @@ public static Boolean managerMethod(Manager manager) {
                         System.out.println(ticket);
                     }
                 }
+                System.out.println(Divider);
                 System.out.println("Do you want to edit one of your tickets?" + "\n" + "Type: Y or N");
                 text = scan.nextLine().toUpperCase();
                 if (text.equals("Y")) {
                     text = "";
+                    System.out.println(Divider);
                     System.out.println("Tell me the ID of the ticket");
                     text = scan.nextLine();
+                    System.out.println(Divider);
                     System.out.println("You have selected the ticket with the ID " + text);
                     boolean entered = false;
                     for (Ticket ticket : tickets) {
                         if (ticket.getDni_tecnician().contains(technician.getDNI())) {
                             if (ticket.getId() == Integer.parseInt(text)) {
                                 System.out.println(ticket);
+                                System.out.println(Divider);
                                 ticket.setState();
+                                System.out.println(Divider);
                                 System.out.println("Introduce an explanation of how you solved the problem");
                                 text = scan.nextLine();
+                                System.out.println(Divider);
                                 ticket.setSolution(text);
                                 System.out.println("Result:" + "\n" + ticket);
                                 entered = true;
