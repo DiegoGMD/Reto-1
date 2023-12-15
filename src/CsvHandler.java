@@ -86,9 +86,9 @@ public class CsvHandler {
         PrintWriter out = null;
         try {
             out = new PrintWriter(new FileWriter("Ticket.csv"));
-            out.println("ID,DNI_Technician,DNI_Manager,ID_Request,State,Title,Description");
+            out.println("ID;DNI_Technician;DNI_Manager;ID_Request;State;Title;Description");
             for (Ticket ticket : tickets) {
-                out.println(ticket.getId() + "," + ticket.getDni_tecnician() + "," + ticket.getDni_manager() + "," + ticket.getId_petition() + "," + ticket.getState() + "," + ticket.getTitle() + "," + ticket.getDescription());
+                out.println(ticket.getId() + ";" + ticket.getDni_tecnician() + ";" + ticket.getDni_manager() + ";" + ticket.getId_petition() + ";" + ticket.getState() + ";" + ticket.getTitle() + ";" + ticket.getDescription());
             }
         } finally {
             if (out != null) {
@@ -202,7 +202,7 @@ public class CsvHandler {
             in = new BufferedReader(new FileReader("Ticket.csv"));
             String line = in.readLine();
             while ((line = in.readLine()) != null) {
-                String[] ticketInfo = line.split(",");
+                String[] ticketInfo = line.split(";");
                 tickets.add(new Ticket(Integer.valueOf(ticketInfo[0]), ticketInfo[1], ticketInfo[2],
                         Integer.valueOf(ticketInfo[3]), ticketInfo[4], ticketInfo[5], ticketInfo[6]));
                 //id, dni_technician, dni_manager, id_petition, state, title, description.
