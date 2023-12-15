@@ -1,6 +1,9 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     public static final String Divider = "--------------------------------------------------------------------------";
@@ -85,23 +88,23 @@ public class Main {
             } else if (user != null) {
                 exit = userMethod(user);
             } else {
-                exit = managerMethod(manager);
-            }
+        exit = managerMethod(manager);
+    }
             System.out.println("If you want to Exit press 1, if you want to login with another user press other key");
-            String strExit = Global.inputKeyboard.next();
+    String strExit = Global.inputKeyboard.next();
             if (strExit.equals("1")) {
-                exit = true;
-            } else {
-                exit = false;
-            }
+        exit = true;
+    } else {
+        exit = false;
+    }
 
-        }
+}
 
 
 
     }
 
-    public static Boolean managerMethod(Manager manager) {
+public static Boolean managerMethod(Manager manager) {
         return  true;
     }
 
@@ -109,8 +112,74 @@ public class Main {
         return  true;
     }
 
-    public static Boolean technicianMethod(Technician technician) {
+    public static Boolean technicianMethod(Technician technician) throws IOException {
+        boolean exit = false;
+        while (!exit) {
+            List<Ticket> tickets = getTicketsCsv();
+            Scanner scan = new Scanner(System.in);
+            String text = "";
+            if (tickets.isEmpty()) {
+                System.out.println("No tickets available.");
+            } else {
+                System.out.println("Your Tickets:");
+                for (Ticket ticket : tickets) {
+                    if (ticket.getDni_tecnician().contains(technician.getDNI())) {
+                        System.out.println(ticket);
+                    }
+                }
+                System.out.println("Do you want to edit one of your tickets?" + "\n" + "Type: Y or N");
+                text = scan.nextLine().toUpperCase();
+                if (text.equals("Y")) {
+                    text = "";
+                    System.out.println("Tell me the ID of the ticket");
+                    text = scan.nextLine();
+                    System.out.println("You have selected the ticket with the ID " + text);
+                    boolean entered = false;
+                    for (Ticket ticket : tickets) {
+                        if (ticket.getDni_tecnician().contains(technician.getDNI())) {
+                            if (ticket.getId() == Integer.parseInt(text)) {
+                                System.out.println(ticket);
+                                ticket.setState();
+                                System.out.println("Introduce an explanation of how you solved the problem");
+                                text = scan.nextLine();
+                                ticket.setSolution(text);
+                                System.out.println("Result:" + "\n" + ticket);
+                                entered = true;
+                            }
+
+                        }
+                    }
+                    if (!entered) {
+                        System.out.println("You don't have a ticket with that id assigned to you");
+                    }
+                } else {
+                    exit = true;
+                }
+            }
+        }
+
+
         return  true;
+    }
+    public static List<Ticket> getTicketsCsv() throws IOException {
+        BufferedReader in = null;
+        List<Ticket> tickets = new ArrayList<Ticket>();
+        try {
+
+            in = new BufferedReader(new FileReader("Ticket.csv"));
+            String line = in.readLine();
+            while ((line = in.readLine()) != null) {
+                String[] ticketInfo = line.split(",");
+                tickets.add(new Ticket(Integer.valueOf(ticketInfo[0]), ticketInfo[1], ticketInfo[2],
+                        Integer.valueOf(ticketInfo[3]), ticketInfo[4], ticketInfo[5], ticketInfo[6]));
+                //id, dni_technician, dni_manager, id_petition, state, title, description.
+            }
+        } finally {
+            if (in != null) {
+                in.close();
+            }
+        }
+        return tickets;
     }
 
 }

@@ -78,19 +78,24 @@ public class Ticket {
     }
 
     public void setState() {
-        System.out.println("Select the state of the ticket:" + "\n" +
-                            "1.Open" + "\t" + "2.Solved" + "\t" + "3.Closed");
-        Scanner input = new Scanner(System.in);
-        switch (input.nextInt()){
-            case 1:
-                state = "Open";
-                break;
-            case 2:
-                state = "Solved";
-                break;
-            case 3:
-                state = "Closed";
-                break;
+        state = "";
+        while (state.isEmpty()) {
+            System.out.println("Select the state of the ticket:" + "\n" +
+                    "1.Open" + "\t" + "2.Solved" + "\t" + "3.Closed");
+            Scanner input = new Scanner(System.in);
+            switch (input.nextInt()){
+                case 1:
+                    state = "Open";
+                    break;
+                case 2:
+                    state = "Solved";
+                    break;
+                case 3:
+                    state = "Closed";
+                    break;
+                default:
+                    System.out.println("That wasn't a valid option, try again.");
+            }
         }
         this.state = state;
     }
