@@ -99,7 +99,6 @@ public class MainPruebaUser {
                 System.out.println("Please enter id_request :");
                 System.out.println(CsvHandler.makeCategoryCsv());
                 int cod_category = Global.inputKeyboard.nextInt();
-                //getid user
                 System.out.println("Write the title of the petition accodring to the id request: ");
                 String title = Global.inputKeyboard.next();
                 System.out.println("Write a short description of the problem");

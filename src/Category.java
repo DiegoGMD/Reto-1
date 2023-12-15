@@ -33,6 +33,6 @@ public class Category {
   @Override
     public String toString () {
         String s = "";
-        return s += "( " + getCod_category() + " ) " + getCategory() + "\n";
+        return s += "( " + cod_category + " ) " + category + "\n";
   }
 }

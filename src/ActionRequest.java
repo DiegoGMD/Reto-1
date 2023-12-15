@@ -83,11 +83,11 @@ public class ActionRequest {
     @Override
     public String toString() {
         String s = "";
-        return s+= "ID_Request: " + getId_request() + "\n" +
-                "ID-Category: " + getId_category() + "\n" +
-                "ID_User: " + getId_user() + "\n" +
-                "Title: " + getTitle() + "\n" +
-                "Description: " + getDescription() + "\n" +
-                "Article: " + getArticle() + "\n";
+        return s+= "ID_Request: " + id_request + "\n" +
+                "ID-Category: " + id_category + "\n" +
+                "ID_User: " + id_user + "\n" +
+                "Title: " + title + "\n" +
+                "Description: " + description + "\n" +
+                "Article: " + article + "\n";
     }
 }

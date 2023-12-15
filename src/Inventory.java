@@ -31,7 +31,7 @@ public class Inventory {
     @Override
     public String toString() {
         String s = "";
-        return s += "( " + getCod_serie() + " ) " + getArticles() + "\n";
+        return s += "( " + cod_serie + " ) " + articles + "\n";
     }
 }
 
