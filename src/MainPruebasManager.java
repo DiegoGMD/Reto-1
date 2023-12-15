@@ -1,4 +1,3 @@
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -123,7 +122,7 @@ public class MainPruebasManager {
                                     default:
                                         System.out.println("Please enter a valid option");
                                     case 1:
-                                        request.setId_category(Category.getCategory());
+                                        request.setId_category(Category.selectCategory());
                                         break;
                                     case 2:
                                         request.setTitle();

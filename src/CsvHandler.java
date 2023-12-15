@@ -81,7 +81,6 @@ public class CsvHandler {
         return categoryList;
     }
 
-
     public static void writeTicketsCsv(List<Ticket> tickets) throws IOException {
         PrintWriter out = null;
         try {
@@ -214,6 +213,4 @@ public class CsvHandler {
         }
         return tickets;
     }
-
-
 }

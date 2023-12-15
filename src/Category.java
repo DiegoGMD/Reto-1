@@ -1,4 +1,5 @@
 import java.io.IOException;
+import java.util.List;
 
 public class Category {
     private String category;
@@ -16,13 +17,17 @@ public class Category {
     }
 
 //-------------------------------Getters----------------------------------------------------//
-    public static int getCategory() throws IOException {
+    public static int selectCategory() throws IOException {
         int cod_category = -1;
         boolean b = false;
         while (!b) {
             b = true;
+            List<Category> categories = CsvHandler.makeCategoryCsv();
+            System.out.println("Categories:");
+            for (Category category1 : categories) {
+                System.out.println(category1);
+            }
             System.out.println("Please enter id_request :");
-            System.out.println(CsvHandler.makeCategoryCsv());
             cod_category = Global.inputKeyboard.nextInt();
             switch (cod_category) {
                 case 1:
@@ -93,6 +98,6 @@ public class Category {
   @Override
     public String toString () {
         String s = "";
-        return s += "( " + cod_category + " ) " + category + "\n";
+        return s += "( " + cod_category + " ) " + category;
   }
 }

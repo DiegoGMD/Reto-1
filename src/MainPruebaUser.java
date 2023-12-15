@@ -86,7 +86,7 @@ public class MainPruebaUser {
     }
 
     public static Boolean userMethod(User user) throws IOException {
-        List<ActionRequest> petition = CsvHandler.getPetitionsCsv();
+        List<ActionRequest> petitions = CsvHandler.getPetitionsCsv();
         boolean b =true;
         int IDPetition = 5;
         while (b) {
@@ -95,24 +95,37 @@ public class MainPruebaUser {
             if (!option.equals("1") && !option.equals("2") && !option.equals("3")) {
                 System.out.println("Please enter a valid option");
             } else if (option.equals("1")) {
-                System.out.println(CsvHandler.makeActionRequestCsv());
+                for (ActionRequest petition : petitions) {
+                    if (petition.getId_user().equals(user.getDNI())){
+                        System.out.println(petition);
+                    }
+                }
             } else if (option.equals("2")) {
-                int cod_category = Category.getCategory();
-                System.out.println("Write the title of the petition accodring to the id request: ");
-                Global.inputKeyboard.nextLine();
-                String title = Global.inputKeyboard.nextLine();
-                System.out.println("Write a short description of the problem");
-                String description = Global.inputKeyboard.nextLine();
-                String article = ActionRequest.getArticle();
-                ActionRequest peitition = new ActionRequest(IDPetition, cod_category, user.getDNI(),title, description,article);
-                System.out.println(peitition);
-                petition.add(peitition);
+                makePetitions(user, IDPetition, petitions);
                 IDPetition ++;
             } else if (option.equals("3")) {
                 return false;
             }
         }
         return true;
+    }
+
+    private static void makePetitions(User user, int IDPetition, List<ActionRequest> petitions) throws IOException {
+        int cod_category = Category.selectCategory();
+        for (ActionRequest petition : petitions) {
+            if (petition.getId_user().equals(user.getDNI())){
+                System.out.println(petition);
+            }
+        }
+        System.out.println("Write the title of the petition accodring to the id request: ");
+        Global.inputKeyboard.nextLine();
+        String title = Global.inputKeyboard.nextLine();
+        System.out.println("Write a short description of the problem");
+        String description = Global.inputKeyboard.nextLine();
+        String article = ActionRequest.getArticle();
+        ActionRequest petition = new ActionRequest(IDPetition, cod_category, user.getDNI(),title, description,article);
+        System.out.println(petition);
+        petitions.add(petition);
     }
 
     public static Boolean technicianMethod(Technician technician) {
