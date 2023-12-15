@@ -8,6 +8,11 @@ public class Category {
     this.category = category;
     }
 
+    public Category () {
+        cod_category = -1;
+        category = "";
+    }
+
 //-------------------------------Getters----------------------------------------------------//
     public String getCategory() {
         return category;
@@ -24,4 +29,10 @@ public class Category {
     public void setCod_category(int cod_category) {
         this.cod_category = cod_category;
     }
+//----------------------------------ToString------------------------------------------------//
+  @Override
+    public String toString () {
+        String s = "";
+        return s += "( " + getCod_category() + " ) " + getCategory() + "\n";
+  }
 }

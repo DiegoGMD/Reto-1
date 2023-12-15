@@ -74,7 +74,7 @@ public class Ticket {
 
     }
 
-    public void setEstado() {
+    public void setState() {
         System.out.println("Select the state of the ticket:" + "\n" +
                             "1.OPEN" + "\t" + "2.SOLVED" + "\t" + "3.CLOSED");
         Scanner input = new Scanner(System.in);
@@ -92,7 +92,7 @@ public class Ticket {
         this.state = state;
     }
 
-    public void setTitulo() {
+    public void setTitle() {
         Scanner input = new Scanner(System.in);
         System.out.println("Write below the ticket title:");
         this.title = input.nextLine();

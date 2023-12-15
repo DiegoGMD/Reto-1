@@ -1,0 +1,16 @@
+ID_Category,Name
+1,Connection Absence
+2,Server Disconnection
+3,Doesn't save information in the database
+4,Email not working
+5,Information from previous days is lost
+6,Incidents are not sent
+7,Incidents are not received
+8,Computer doesn't turn on
+9,Mouse not working
+10,Keyboard not working
+11,Screen not working
+12,Router doesn't turn on
+13,Server doesn't turn on
+14,Switch doesn't turn on
+15,Others

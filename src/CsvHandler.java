@@ -8,7 +8,7 @@ public class CsvHandler {
         List<User> users = new ArrayList<User>();
         try {
 
-            in = new BufferedReader(new FileReader("Usuario.csv"));
+            in = new BufferedReader(new FileReader("Users.csv"));
             String line = in.readLine();
             while ((line = in.readLine()) != null) {
                 String[] userInfo = line.split(",");
@@ -26,8 +26,9 @@ public class CsvHandler {
         BufferedReader input = null;
         List<ActionRequest> petition = new ArrayList<ActionRequest>();
         try {
-            input = new BufferedReader(new FileReader("Petición.csv"));
+            input = new BufferedReader(new FileReader("ActionRequest.csv"));
             String line;
+            input.readLine();
             while ((line = input.readLine()) != null) {
                 String[] items = line.split(",");
                 petition.add(new ActionRequest(Integer.parseInt(items[0]),
@@ -46,7 +47,7 @@ public class CsvHandler {
         BufferedReader input = null;
         List<Inventory> inventory = new ArrayList<Inventory>();
         try {
-            input = new BufferedReader(new FileReader("Equipo_inventario.csv"));
+            input = new BufferedReader(new FileReader("Inventory.csv"));
             String line;
             while ((line = input.readLine()) != null) {
                 String[] items = line.split(",");
@@ -64,8 +65,9 @@ public class CsvHandler {
         BufferedReader input = null;
         List<Category> categoryList = new ArrayList<Category>();
         try {
-            input = new BufferedReader(new FileReader("Categorias.csv"));
+            input = new BufferedReader(new FileReader("Category.csv"));
             String line;
+            input.readLine();
             while ((line = input.readLine()) != null) {
                 String[] item = line.split(",");
                 categoryList.add(new Category(Integer.parseInt(item[0]), item[1]));
@@ -81,8 +83,8 @@ public class CsvHandler {
     public static void writeUsersCsv(List<User> users) throws IOException {
         PrintWriter out = null;
         try {
-            out = new PrintWriter(new FileWriter("Usuario.csv"));
-            out.println("DNI,Name,id_dep");
+            out = new PrintWriter(new FileWriter("Users.csv"));
+            out.println("DNI, Name, id_dep");
             for (User user : users) {
                 out.println(user.getDNI() + "," + user.getName() + "," + user.getId_dep());
             }
@@ -97,7 +99,7 @@ public class CsvHandler {
         List<Technician> technicians = new ArrayList<Technician>();
         try {
 
-            in = new BufferedReader(new FileReader("Tecnico.csv"));
+            in = new BufferedReader(new FileReader("Technician.csv"));
             String line = in.readLine();
             while ((line = in.readLine()) != null) {
                 String[] userInfo = line.split(",");
@@ -113,8 +115,8 @@ public class CsvHandler {
     public static void writeTechniciansCsv(List<User> users) throws IOException {
         PrintWriter out = null;
         try {
-            out = new PrintWriter(new FileWriter("Tecnico.csv"));
-            out.println("DNI,Name");
+            out = new PrintWriter(new FileWriter("Technician.csv"));
+            out.println("DNI, Name");
             for (User user : users) {
                 out.println(user.getDNI() + "," + user.getName());
             }
@@ -128,7 +130,7 @@ public class CsvHandler {
         BufferedReader in = null;
         List<ActionRequest> users = new ArrayList<ActionRequest>();
         try {
-            in = new BufferedReader(new FileReader("Petición.csv"));
+            in = new BufferedReader(new FileReader("ActionRequest.csv"));
             String line = in.readLine();
             while ((line = in.readLine()) != null) {
                 String[] userInfo = line.split(",");
@@ -145,8 +147,8 @@ public class CsvHandler {
     public static void writePetitionCsv(List<User> users) throws IOException {
         PrintWriter out = null;
         try {
-            out = new PrintWriter(new FileWriter("Petición.csv"));
-            out.println("ID ,ID Categoría ,ID Usuario ,Título ,Descripción ,Equipo");
+            out = new PrintWriter(new FileWriter("ActionRequest.csv"));
+            out.println("ID, ID_Category, ID_User, Title, Description, Inventory");
             for (User user : users) {
                 out.println(user.getDNI() + "," + user.getName() + "," + user.getId_dep());
             }
@@ -162,7 +164,7 @@ public class CsvHandler {
         List<Manager> managers = new ArrayList<Manager>();
         try {
 
-            in = new BufferedReader(new FileReader("Gestor de sistemas.csv"));
+            in = new BufferedReader(new FileReader("Managers.csv"));
             String line = in.readLine();
             while ((line = in.readLine()) != null) {
                 String[] userInfo = line.split(",");

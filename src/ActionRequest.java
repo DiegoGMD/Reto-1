@@ -19,6 +19,15 @@ public class ActionRequest {
         this.description = description;
         this.article = article;
     }
+
+    public ActionRequest() {
+        id_request = -1;
+        id_category = -1;
+        id_user = "";
+        title = "";
+        description = "";
+        article = "";
+    }
 //------------------------------------Getters---------------------------------------------//
 
     public int getId_request() {
@@ -74,14 +83,11 @@ public class ActionRequest {
     @Override
     public String toString() {
         String s = "";
-        try {
-             List<ActionRequest> petitions = CsvHandler.makeActionRequestCsv();
-             for (ActionRequest request : petitions) {
-                 s += request + "\n";
-             }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        return s;
+        return s+= "ID_Request: " + getId_request() + "\n" +
+                "ID-Category: " + getId_category() + "\n" +
+                "ID_User: " + getId_user() + "\n" +
+                "Title: " + getTitle() + "\n" +
+                "Description: " + getDescription() + "\n" +
+                "Article: " + getArticle() + "\n";
     }
 }

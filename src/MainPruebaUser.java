@@ -29,7 +29,6 @@ public class MainPruebaUser {
                     int index = 1;
                     for (User usersWithName : usersByName) {
                         System.out.println(index + " " + usersWithName);
-                        userMethod(user);
                         index++;
                     }
                     for (Technician technicianWithName : techniciansByName) {
@@ -88,15 +87,26 @@ public class MainPruebaUser {
 
     public static Boolean userMethod(User user) throws IOException {
         boolean b =true;
+        int IDPetition = 5;
         while (b) {
-        System.out.println("Please enter any option: (1) View petitions (2) Make petitions (3) EXIT");
+        System.out.println( "Please enter any option: (1) View petitions (2) Make petitions (3) EXIT");
         String option = Global.inputKeyboard.next();
             if (!option.equals("1") && !option.equals("2") && !option.equals("3")) {
                 System.out.println("Please enter a valid option");
             } else if (option.equals("1")) {
-
+                System.out.println(CsvHandler.makeActionRequestCsv());
             } else if (option.equals("2")) {
-
+                System.out.println("Please enter id_request :");
+                System.out.println(CsvHandler.makeCategoryCsv());
+                int cod_category = Global.inputKeyboard.nextInt();
+                //getid user
+                System.out.println("Write the title of the petition accodring to the id request: ");
+                String title = Global.inputKeyboard.next();
+                System.out.println("Write a short description of the problem");
+                String description = Global.inputKeyboard.next();
+                System.out.println("Choose the code of the Hardware involved");
+                System.out.println(CsvHandler.makeInventory());
+                String cod_Article = Global.inputKeyboard.next();
             } else if (option.equals("3")) {
                 return false;
             }
