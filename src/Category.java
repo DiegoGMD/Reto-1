@@ -20,6 +20,7 @@ public class Category {
         int cod_category = -1;
         boolean b = false;
         while (!b) {
+            b = true;
             System.out.println("Please enter id_request :");
             System.out.println(CsvHandler.makeCategoryCsv());
             cod_category = Global.inputKeyboard.nextInt();
