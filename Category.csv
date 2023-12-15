@@ -1,16 +1,16 @@
-ID Categoría,Nombre
-1,Ausencia de conexión
-2,Desconexión con el servidor
-3,No guarda información en la base de datos
-4,No funciona el correo
-5,Se ha perdido la informacion de dias anteriores
-6,No se envían las incidencias
-7,No se reciben las incidencias
-8,No enciende el ordenador
-9,No me funciona el ratón
-10,No me funciona el teclado
-11,No me funciona la pantalla
-12,No enciende el router
-13,No enciende el servidor
-14,No enciende el switch
-15,Otros
+ID_Category,Name
+1,Connection Absence
+2,Server Disconnection
+3,Doesn't save information in the database
+4,Email not working
+5,Information from previous days is lost
+6,Incidents are not sent
+7,Incidents are not received
+8,Computer doesn't turn on
+9,Mouse not working
+10,Keyboard not working
+11,Screen not working
+12,Router doesn't turn on
+13,Server doesn't turn on
+14,Switch doesn't turn on
+15,Others
