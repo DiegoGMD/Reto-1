@@ -100,7 +100,7 @@ public class CsvHandler {
         PrintWriter out = null;
         try {
             out = new PrintWriter(new FileWriter("Users.csv"));
-            out.println("DNI, Name, id_dep");
+            out.println("DNI,Name,id_dep");
             for (User user : users) {
                 out.println(user.getDNI() + "," + user.getName() + "," + user.getId_dep());
             }
@@ -132,7 +132,7 @@ public class CsvHandler {
         PrintWriter out = null;
         try {
             out = new PrintWriter(new FileWriter("Technician.csv"));
-            out.println("DNI, Name");
+            out.println("DNI,Name");
             for (User user : users) {
                 out.println(user.getDNI() + "," + user.getName());
             }
@@ -164,7 +164,7 @@ public class CsvHandler {
         PrintWriter out = null;
         try {
             out = new PrintWriter(new FileWriter("ActionRequest.csv"));
-            out.println("ID, ID_Category, ID_User, Title, Description, Inventory");
+            out.println("ID,ID_Category,ID_User,Title,Description,Inventory");
             for (User user : users) {
                 out.println(user.getDNI() + "," + user.getName() + "," + user.getId_dep());
             }
