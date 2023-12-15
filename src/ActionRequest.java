@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.util.List;
+import java.util.Scanner;
 
 public class ActionRequest {
     private int id_request;
@@ -67,12 +68,14 @@ public class ActionRequest {
         this.id_user = id_user;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitle() {
+        System.out.println("Write below the ActionRequest title:");
+        this.title = Global.inputKeyboard.nextLine();
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setDescription() {
+        System.out.println("Write below the ActionRequest description:");
+        this.description = Global.inputKeyboard.nextLine();
     }
 
     public void setArticle(String article) {

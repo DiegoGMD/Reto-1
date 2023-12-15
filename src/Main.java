@@ -42,33 +42,40 @@ public class Main {
                         System.out.println(index + " " + managersWithName);
                         index++;
                     }
-                    System.out.println(Divider);
-                    System.out.println("Input the name of the number of the User of technician you want to use");
-                    int numIndex = Global.inputKeyboard.nextInt();
-                    index = 1;
-                    for (User usersWithName : usersByName) {
-                        if (index == numIndex) {
-                            user = usersWithName;
-                        }
-                        index++;
-                    }
-                    for (Technician technicianWithName : techniciansByName) {
-                        if (index == numIndex) {
-                            technician = technicianWithName;
-                        }
-                        index++;
-                    }
-                    for (Manager managersWithName : managersByName) {
-                        if (index == numIndex) {
-                            manager = managersWithName;
-                        }
-                        index++;
-                    }
-                    if (technician == null && user == null && manager == null) {
-                        System.out.println("The index you've inputed doesn't exist in the options");
+                    if (usersByName.isEmpty() && techniciansByName.isEmpty() && managersByName.isEmpty()) {
+                        System.out.println("That user doesn't exist try again");
                     } else {
-                        selectUser = true;
+                        System.out.println(Divider);
+                        System.out.println("Input the name of the number of the User of technician you want to use");
+                        int numIndex = Global.inputKeyboard.nextInt();
+                        index = 1;
+                        for (User usersWithName : usersByName) {
+                            if (index == numIndex) {
+                                user = usersWithName;
+                            }
+                            index++;
+                        }
+                        for (Technician technicianWithName : techniciansByName) {
+                            if (index == numIndex) {
+                                technician = technicianWithName;
+                            }
+                            index++;
+                        }
+                        for (Manager managersWithName : managersByName) {
+                            if (index == numIndex) {
+                                manager = managersWithName;
+                            }
+                            index++;
+                        }
+                        if (technician == null && user == null && manager == null) {
+                            System.out.println("The index you've inputed doesn't exist in the options");
+                        } else {
+                            selectUser = true;
+                        }
                     }
+
+
+
 
                 }
 
@@ -80,6 +87,14 @@ public class Main {
             } else {
                 exit = managerMethod(manager);
             }
+            System.out.println("If you want to Exit press 1, if you want to login with another user press other key");
+            String strExit = Global.inputKeyboard.next();
+            if (strExit.equals("1")) {
+                exit = true;
+            } else {
+                exit = false;
+            }
+
         }
 
 

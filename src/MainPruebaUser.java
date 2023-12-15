@@ -100,13 +100,15 @@ public class MainPruebaUser {
                 System.out.println(CsvHandler.makeCategoryCsv());
                 int cod_category = Global.inputKeyboard.nextInt();
                 System.out.println("Write the title of the petition accodring to the id request: ");
+                Global.inputKeyboard.nextLine();
                 String title = Global.inputKeyboard.nextLine();
                 System.out.println("Write a short description of the problem");
                 String description = Global.inputKeyboard.nextLine();
                 System.out.println("Choose the code of the Hardware involved");
                 System.out.println(CsvHandler.makeInventory());
                 String cod_Article = Global.inputKeyboard.nextLine();
-
+                ActionRequest peitition = new ActionRequest(IDPetition, cod_category, user.getDNI(),title, description,cod_Article);
+                System.out.println(peitition);
             } else if (option.equals("3")) {
                 return false;
             }

@@ -84,29 +84,34 @@ public class MainPruebasManager {
     }
 
     public static Boolean managerMethod(Manager manager) throws IOException {
-        System.out.println("What you want to do: Consult(1), Modify(2), Create(3) or Exit(4)?");
-        int option = Global.inputKeyboard.nextInt();
-        int option2;
-        if (option == 1) {
-            System.out.println("You want to consult requests(1) or tickets(2)?");
-            option2 = Global.inputKeyboard.nextInt();
-            if (option2 == 1) {
-                List<ActionRequest> requests = new ArrayList<>();
-                requests = CsvHandler.getPetitionsCsv();
-                System.out.println(requests);
+        boolean b = true;
+        while (b) {
+            System.out.println("What you want to do: Consult(1), Modify(2), Create(3) or Exit(4)?");
+            String option = Global.inputKeyboard.next();
+            String option2;
+            if (!option.equals("1") && !option.equals("2") && !option.equals("3") && !option.equals("4")) {
+                System.out.println("Please enter a valid option");
+            } else if (option.equals("1")) {
+                System.out.println("You want to consult requests(1) or tickets(2)?");
+                option2 = Global.inputKeyboard.next();
+                if (option2.equals("1")) {
+                    for (ActionRequest requests : CsvHandler.getPetitionsCsv()) {
+                        System.out.println(requests);
+                    }
+                } else {
+                    for (Ticket tickets : CsvHandler.getTicketsCsv()) {
+                        System.out.println(tickets);
+                    }
+                }
+            } else if (option.equals("2")) {
+                System.out.println("You want to modify requests(1) or tickets(2)?");
+                option2 = Global.inputKeyboard.next();
+            } else if (option.equals("3")) {
+                System.out.println("You want to create request(1) or ticket(2)?");
+                option2 = Global.inputKeyboard.next();
             } else {
-                List<ActionRequest> tickets = new ArrayList<>();
-                //tickets = CsvHandler.getTicketsCsv();
-                System.out.println(tickets);
+                return false;
             }
-        } else if (option == 2) {
-            System.out.println("You want to modify requests(1) or tickets(2)?");
-            option2 = Global.inputKeyboard.nextInt();
-        } else if (option == 3) {
-            System.out.println("You want to create request(1) or ticket(2)?");
-            option2 = Global.inputKeyboard.nextInt();
-        } else {
-            return true;
         }
         return true;
     }
