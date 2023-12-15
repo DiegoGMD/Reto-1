@@ -80,6 +80,22 @@ public class CsvHandler {
         }
         return categoryList;
     }
+
+
+    public static void writeTicketsCsv(List<Ticket> tickets) throws IOException {
+        PrintWriter out = null;
+        try {
+            out = new PrintWriter(new FileWriter("Ticket.csv"));
+            out.println("ID,DNI_Technician,DNI_Manager,ID_Request,State,Title,Description");
+            for (Ticket ticket : tickets) {
+                out.println(ticket.getId() + "," + ticket.getDni_tecnician() + "," + ticket.getDni_manager() + "," + ticket.getId_petition() + "," + ticket.getState() + "," + ticket.getTitle() + "," + ticket.getDescription());
+            }
+        } finally {
+            if (out != null) {
+                out.close();
+            }
+        }
+    }
     public static void writeUsersCsv(List<User> users) throws IOException {
         PrintWriter out = null;
         try {
@@ -189,6 +205,7 @@ public class CsvHandler {
                 String[] ticketInfo = line.split(",");
                 tickets.add(new Ticket(Integer.valueOf(ticketInfo[0]), ticketInfo[1], ticketInfo[2],
                         Integer.valueOf(ticketInfo[3]), ticketInfo[4], ticketInfo[5], ticketInfo[6]));
+                //id, dni_technician, dni_manager, id_petition, state, title, description.
             }
         } finally {
             if (in != null) {

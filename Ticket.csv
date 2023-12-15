@@ -1,5 +1,5 @@
-ID_Category,DNI_Technician,DNI_Manager,ID_Request,State,Title,Description
-1,18273456A,87654321A,1,Open,Disconnected from the server,I was uploading data and suddenly it stopped working the upload
+ID,DNI_Technician,DNI_Manager,ID_Request,State,Title,Description
+1,18273456A,87654321A,1,Closed,Disconnected from the server,I was uploading data and suddenly it stopped working the upload Solution: Test to see if it works | Solution: Test 2
 2,18273456D,87654321D,2,Open,The mail doesn't work,When i try to send mail it keeps loading but it never sends
 3,18273456R,87654321R,3,Open,The keyboard doesn't work,I've been trying to use the keyboard for a while but it doesn't work
 4,18273456S,87654321S,4,Open,Router doesn't turn on,When i try to turn on the router there isn't any light

@@ -73,7 +73,7 @@ public class Ticket {
     public void setId_petition() {}
 
     public String setSolution(String message) { //To be optimized
-        description += "\n" + "Solution: " + message;
+        description += " | " + "Solution: " + message;
         return description;
     }
 

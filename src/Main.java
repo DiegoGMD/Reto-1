@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Handler;
 
 public class Main {
     public static final String Divider = "--------------------------------------------------------------------------";
@@ -115,7 +116,7 @@ public static Boolean managerMethod(Manager manager) {
     public static Boolean technicianMethod(Technician technician) throws IOException {
         boolean exit = false;
         while (!exit) {
-            List<Ticket> tickets = getTicketsCsv();
+            List<Ticket> tickets = CsvHandler.getTicketsCsv();
             Scanner scan = new Scanner(System.in);
             String text = "";
             if (tickets.isEmpty()) {
@@ -151,6 +152,8 @@ public static Boolean managerMethod(Manager manager) {
                     }
                     if (!entered) {
                         System.out.println("You don't have a ticket with that id assigned to you");
+                    } else {
+                        CsvHandler.writeTicketsCsv(tickets);
                     }
                 } else {
                     exit = true;
@@ -161,25 +164,6 @@ public static Boolean managerMethod(Manager manager) {
 
         return  true;
     }
-    public static List<Ticket> getTicketsCsv() throws IOException {
-        BufferedReader in = null;
-        List<Ticket> tickets = new ArrayList<Ticket>();
-        try {
 
-            in = new BufferedReader(new FileReader("Ticket.csv"));
-            String line = in.readLine();
-            while ((line = in.readLine()) != null) {
-                String[] ticketInfo = line.split(",");
-                tickets.add(new Ticket(Integer.valueOf(ticketInfo[0]), ticketInfo[1], ticketInfo[2],
-                        Integer.valueOf(ticketInfo[3]), ticketInfo[4], ticketInfo[5], ticketInfo[6]));
-                //id, dni_technician, dni_manager, id_petition, state, title, description.
-            }
-        } finally {
-            if (in != null) {
-                in.close();
-            }
-        }
-        return tickets;
-    }
 
 }
