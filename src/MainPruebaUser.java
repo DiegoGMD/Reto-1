@@ -29,7 +29,6 @@ public class MainPruebaUser {
                     int index = 1;
                     for (User usersWithName : usersByName) {
                         System.out.println(index + " " + usersWithName);
-                        userMethod(user);
                         index++;
                     }
                     for (Technician technicianWithName : techniciansByName) {

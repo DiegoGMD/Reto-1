@@ -1,5 +1,5 @@
 ID,ID_Category,ID_User,Title,Description,Inventory
 1,4,12345678A,Monitor failure,The monitor doesn't have signal despite having power connection,Monitor_Marketing
 2,15,12345678D,Internal issue in the tower,It seems that there is a fan that is not working normally,Tower_Admin
-3,7,12345678R,Fallo de teclado,Hay algunas teclas que no funcionan bien,MouseTeclado_Ventas
-4,11,12345678S,El router no responde,Al encender el router este no responde y esta recibiendo energia,Router
+3,7,12345678R,Keyboard Failure,Some keys are not working properly,MouseKeyboard_Sales
+4,11,12345678S,Router Unresponsive,Upon turning on the router, It does not respond and is receiving power,Router
