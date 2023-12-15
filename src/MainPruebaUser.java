@@ -100,6 +100,7 @@ public class MainPruebaUser {
                 System.out.println(CsvHandler.makeCategoryCsv());
                 int cod_category = Global.inputKeyboard.nextInt();
                 System.out.println("Write the title of the petition accodring to the id request: ");
+                Global.inputKeyboard.nextLine();
                 String title = Global.inputKeyboard.nextLine();
                 System.out.println("Write a short description of the problem");
                 String description = Global.inputKeyboard.nextLine();
