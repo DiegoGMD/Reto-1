@@ -108,10 +108,11 @@ public class Ticket {
     @Override
     public String toString() {
         String s = new String();
-        s = "ID:" + getId() + "\t" +
-             "Title:" + getTitle() + "\n" +
-             "Description:" + getDescription() + "\n" +
-             "State:" + getState() + "\n";
+        s = "ID: " + getId() + "\t" +
+             "Title: " + getTitle() + "\n" +
+             "Description: " + getDescription() + "\n" +
+             "Technician DNI: " + getDni_tecnician() + "\n" +
+             "State: " + getState() + "\n";
         return s;
     }
 }

@@ -101,12 +101,6 @@ public class TechnicianMethodClass {
         return tickets;
     }
     public static Boolean technicianMethod(Technician technician) throws IOException {
-        System.out.println("\n" + "You have selected:" + "\n" + technician + "\n");
-        allTicketsPrinter();
-        return  true;
-    }
-
-    private static void allTicketsPrinter() throws IOException {
         List<Ticket> tickets = getTicketsCsv();
         if (tickets.isEmpty()) {
             System.out.println("No tickets available.");
@@ -115,6 +109,17 @@ public class TechnicianMethodClass {
             for (Ticket ticket : tickets) {
                 System.out.println(ticket);
             }
+            System.out.println("Your Tickets:");
+            for (Ticket ticket : tickets) {
+                if (tickets.contains(technician.getDNI())){
+                    System.out.println(ticket);
+                }
+            }
         }
+        return  true;
+    }
+
+    private static void allTicketsPrinter() throws IOException {
+
     }
 }
