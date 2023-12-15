@@ -159,7 +159,7 @@ public class MainPruebasManager {
                                         ticket.setDescription();
                                         break;
                                     case 3:
-                                        ticket.setDni_tecnician();
+                                        //ticket.setDni_tecnician(); <---- Need to fix
                                         break;
                                     case 4:
                                         ticket.setState();
