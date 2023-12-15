@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
+    public static final String Divider = "--------------------------------------------------------------------------";
     public static void main(String[] args) throws IOException {
 
         List<User> users = new ArrayList<>();
@@ -18,6 +19,7 @@ public class Main {
         while (!exit) {
             boolean selectUser = false;
             while (!selectUser) {
+                System.out.println(Divider);
                 System.out.println("Welcome to the Ticket Management System, please write the name of your user or type Create to make a new user:");
                 String nameUser = Global.inputKeyboard.next();
                 if (nameUser.toUpperCase().equals("CREATE")) {
@@ -27,6 +29,7 @@ public class Main {
                     List<Technician> techniciansByName = Global.getTechnicians(nameUser, technicians);
                     List<Manager> managersByName = Global.getManagers(nameUser, managers);
                     int index = 1;
+                    System.out.println(Divider);
                     for (User usersWithName : usersByName) {
                         System.out.println(index + " " + usersWithName);
                         index++;
@@ -39,6 +42,7 @@ public class Main {
                         System.out.println(index + " " + managersWithName);
                         index++;
                     }
+                    System.out.println(Divider);
                     System.out.println("Input the name of the number of the User of technician you want to use");
                     int numIndex = Global.inputKeyboard.nextInt();
                     index = 1;
