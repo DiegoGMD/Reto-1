@@ -159,7 +159,7 @@ public class MainPruebasManager {
                                         ticket.setDescription();
                                         break;
                                     case 3:
-                                        ticket.setDni_tecnician();
+                                        //ticket.setDni_technician();
                                         break;
                                     case 4:
                                         ticket.setState();
@@ -196,6 +196,7 @@ public class MainPruebasManager {
                     Ticket ticket = new Ticket();
                     ticket.setId();
                     System.out.println("Which technician do you want to assign it to?");
+                    ticket.setDni_technician(Technician.selectTechnician());
 
                     ticket.setDni_manager(manager.getDNI());
                     System.out.println("Which petition is referencing this ticket?");
