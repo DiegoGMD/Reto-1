@@ -199,7 +199,10 @@ public class MainPruebasManager {
 
                     ticket.setDni_manager(manager.getDNI());
                     System.out.println("Which petition is referencing this ticket?");
-                    Global.inputKeyboard.nextInt();
+
+                    ticket.setState();
+                    ticket.setTitle();
+                    ticket.setDescription();
                     System.out.println(ticket);
                 }
             } else {

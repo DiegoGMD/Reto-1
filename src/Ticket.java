@@ -77,7 +77,9 @@ public class Ticket {
         this.dni_manager = dni_manager;
     }
 
-    public void setId_petition() {}
+    public void setId_petition(int id_petition) {
+        this.id_petition = id_petition;
+    }
 
     public String setSolution(String message) { //To be optimized
         description += " | " + "Solution: " + message;
