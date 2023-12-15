@@ -3,7 +3,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class TechnicianMethodClass {
@@ -111,7 +110,7 @@ public class TechnicianMethodClass {
         } else {
             System.out.println("Your Tickets:");
             for (Ticket ticket : tickets) {
-                if (ticket.getDni_tecnician().contains(technician.getDNI())){
+                if (ticket.getDni_technician().contains(technician.getDNI())){
                     System.out.println(ticket);
                 }
             }
@@ -123,7 +122,7 @@ public class TechnicianMethodClass {
                 text = scan.nextLine();
                 System.out.println("You have selected the ticket with the ID " + text);
                 for (Ticket ticket : tickets) {
-                    if (ticket.getDni_tecnician().contains(technician.getDNI())){
+                    if (ticket.getDni_technician().contains(technician.getDNI())){
                         if (ticket.getId() == Integer.parseInt(text)){
                             System.out.println(ticket);
                             ticket.setState();

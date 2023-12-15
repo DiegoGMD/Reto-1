@@ -88,7 +88,7 @@ public class CsvHandler {
             out = new PrintWriter(new FileWriter("Ticket.csv"));
             out.println("ID;DNI_Technician;DNI_Manager;ID_Request;State;Title;Description");
             for (Ticket ticket : tickets) {
-                out.println(ticket.getId() + ";" + ticket.getDni_tecnician() + ";" + ticket.getDni_manager() + ";" + ticket.getId_petition() + ";" + ticket.getState() + ";" + ticket.getTitle() + ";" + ticket.getDescription());
+                out.println(ticket.getId() + ";" + ticket.getDni_technician() + ";" + ticket.getDni_manager() + ";" + ticket.getId_petition() + ";" + ticket.getState() + ";" + ticket.getTitle() + ";" + ticket.getDescription());
             }
         } finally {
             if (out != null) {

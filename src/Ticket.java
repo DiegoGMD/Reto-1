@@ -1,17 +1,19 @@
+import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 public class Ticket {
     private int id;
-    private String dni_tecnician;
+    private String dni_technician;
     private String dni_manager;
     private int id_petition;
     private String state;
     private String title;
     private String description;
 
-    public Ticket(int id, String dni_tecnician, String dni_manager, int id_petition,
+    public Ticket(int id, String dni_technician, String dni_manager, int id_petition,
                   String state, String title, String description) {
         this.id = id;
-        this.dni_tecnician = dni_tecnician;
+        this.dni_technician = dni_technician;
         this.dni_manager = dni_manager;
         this.id_petition = id_petition;
         this.state = state;
@@ -21,7 +23,7 @@ public class Ticket {
 
     public Ticket() {
         id = -1;
-        dni_tecnician = "";
+        dni_technician = "";
         dni_manager = "";
         id_petition = -1;
         state = "";
@@ -33,8 +35,8 @@ public class Ticket {
         return id;
     }
 
-    public String getDni_tecnician() {
-        return dni_tecnician;
+    public String getDni_technician() {
+        return dni_technician;
     }
 
     public String getDni_manager() {
@@ -58,12 +60,17 @@ public class Ticket {
     }
 //---Setters------------------------------------------------------------------------------------------------------------
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId() throws IOException {
+        List<Ticket> tickets = CsvHandler.getTicketsCsv();
+        int counter = 1;
+        for (Ticket ticket : tickets) {
+            counter++;
+        }
+        this.id = counter;
     }
 
     public void setDni_tecnician() {
-        this.dni_tecnician = dni_tecnician;
+        this.dni_technician = dni_technician;
     }
 
     public void setDni_manager() {
@@ -119,7 +126,7 @@ public class Ticket {
         s = "ID: " + getId() + "\t" +
              "Title: " + getTitle() + "\n" +
              "Description: " + getDescription() + "\n" +
-             "Technician DNI: " + getDni_tecnician() + "\n" +
+             "Technician DNI: " + getDni_technician() + "\n" +
              "State: " + getState() + "\n";
         return s;
     }
