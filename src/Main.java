@@ -105,14 +105,130 @@ public class Main {
 
     }
 
-public static Boolean managerMethod(Manager manager) {
-        return  true;
+    public static Boolean managerMethod(Manager manager) throws IOException {
+        boolean b = true;
+        while (b) {
+            System.out.println("What you want to do: Consult(1), Modify(2), Create(3) or Exit(4)?");
+            String option = Global.inputKeyboard.next();
+            String option2;
+            if (!option.equals("1") && !option.equals("2") && !option.equals("3") && !option.equals("4")) {
+                System.out.println("Please enter a valid option");
+            } else if (option.equals("1")) {
+                System.out.println("You want to consult requests(1) or tickets(2)?");
+                option2 = Global.inputKeyboard.next();
+                if (!option2.equals("1") && !option2.equals("2")) {
+                    System.out.println("Please enter a valid option");
+                } else if (option2.equals("1")) {
+                    for (ActionRequest requests : CsvHandler.getPetitionsCsv()) {
+                        System.out.println(requests);
+                    }
+                } else {
+                    for (Ticket tickets : CsvHandler.getTicketsCsv()) {
+                        System.out.println(tickets);
+                    }
+                }
+            } else if (option.equals("2")) {
+                System.out.println("You want to modify requests(1) or tickets(2)?");
+                option2 = Global.inputKeyboard.next();
+                if (!option2.equals("1") && !option2.equals("2")) {
+                    System.out.println("Please enter a valid option");
+                } else if (option2.equals("1")) {
+                    List<ActionRequest> requests = CsvHandler.getPetitionsCsv();
+                    System.out.println("Which request do you want to modify?");
+                    int idRequest = Global.inputKeyboard.nextInt();
+                    while (true) {
+                        for (ActionRequest request : requests) {
+                            if (idRequest == request.getId_request()) {
+                                System.out.println("What do you want to modify: ID_Category(1), Title(2), Description(3), Inventory(4) or EXIT(5)?");
+                                int modifyOption = Global.inputKeyboard.nextInt();
+                                switch (modifyOption) {
+                                    default:
+                                        System.out.println("Please enter a valid option");
+                                    case 1:
+                                        request.setId_category(Category.selectCategory());
+                                        break;
+                                    case 2:
+                                        request.setTitle();
+                                        break;
+                                    case 3:
+                                        request.setDescription();
+                                        break;
+                                    case 4:
+                                        ActionRequest.selectArticle();
+                                        break;
+                                    case 5:
+                                        return false;
+                                }
+                                CsvHandler.writePetitionCsv(requests);
+                            }
+                        }
+                    }
+                } else {
+                    List<Ticket> tickets = CsvHandler.getTicketsCsv();
+                    System.out.println("Which ticket do you want to modify?");
+                    int idTicket = Global.inputKeyboard.nextInt();
+                    while (true) {
+                        for (Ticket ticket : tickets) {
+                            if (idTicket == ticket.getId()) {
+                                System.out.println("What do you want to modify: Title(1), Description(2), Technician DNI(3), State(4) or EXIT(5)?");
+                                int modifyOption = Global.inputKeyboard.nextInt();
+                                switch (modifyOption) {
+                                    default:
+                                        System.out.println("Please enter a valid option");
+                                    case 1:
+                                        ticket.setTitle();
+                                        break;
+                                    case 2:
+                                        ticket.setDescription();
+                                        break;
+                                    case 3:
+                                        //ticket.setDni_technician();
+                                        break;
+                                    case 4:
+                                        ticket.setState();
+                                        break;
+                                    case 5:
+                                        return false;
+                                }
+                                CsvHandler.writeTicketsCsv(tickets);
+                            }
+                        }
+                    }
+                }
+            } else if (option.equals("3")) {
+                List<ActionRequest> petitions = CsvHandler.getPetitionsCsv();
+                System.out.println("You want to create request(1) or ticket(2)?");
+                option2 = Global.inputKeyboard.next();
+                if (!option2.equals("1") && !option2.equals("2")) {
+                    System.out.println("Please enter a valid option");
+                } else if (option2.equals("1")) {
+                    makePetitionsManager(manager, petitions);
+                } else {
+                    List<Ticket> tickets = CsvHandler.getTicketsCsv();
+                    Ticket ticket = new Ticket();
+                    ticket.setId();
+                    System.out.println("Which technician do you want to assign it to?");
+                    ticket.setDni_technician(Technician.selectTechnician());
+                    ticket.setDni_manager(manager.getDNI());
+                    System.out.println("Which petition is referencing this ticket?");
+                    ticket.setId_petition(ActionRequest.selectActionRequest());
+                    ticket.setState();
+                    ticket.setTitle();
+                    ticket.setDescription();
+                    System.out.println(ticket);
+                    tickets.add(ticket);
+                    CsvHandler.writeTicketsCsv(tickets);
+                }
+            } else {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static Boolean userMethod(User user) throws IOException {
         List<ActionRequest> petitions = CsvHandler.getPetitionsCsv();
         boolean b =true;
-        int IDPetition = 5;
         while (b) {
             System.out.println( "Please enter any option: (1) View petitions (2) Make petitions (3) EXIT");
             String option = Global.inputKeyboard.next();
@@ -125,8 +241,7 @@ public static Boolean managerMethod(Manager manager) {
                     }
                 }
             } else if (option.equals("2")) {
-                makePetitionsUser(user, IDPetition, petitions);
-                IDPetition ++;
+                makePetitionsUser(user, petitions);
             } else if (option.equals("3")) {
                 return false;
             }
@@ -134,7 +249,7 @@ public static Boolean managerMethod(Manager manager) {
         return true;
     }
 
-    private static void makePetitionsUser(User user, int IDPetition, List<ActionRequest> petitions) throws IOException {
+    private static void makePetitionsUser(User user, List<ActionRequest> petitions) throws IOException {
         int cod_category = Category.selectCategory();
         System.out.println("Write the title of the petition according to the id request: ");
         Global.inputKeyboard.nextLine();
@@ -142,13 +257,13 @@ public static Boolean managerMethod(Manager manager) {
         System.out.println("Write a short description of the problem");
         String description = Global.inputKeyboard.nextLine();
         String article = ActionRequest.selectArticle();
-        ActionRequest petition = new ActionRequest(IDPetition, cod_category, user.getDNI(),title, description,article);
+        ActionRequest petition = new ActionRequest(ActionRequest.setId(), cod_category, user.getDNI(),title, description,article);
         System.out.println(petition);
         petitions.add(petition);
         CsvHandler.writePetitionCsv(petitions);
     }
 
-    private static void makePetitionsManager(Manager manager, int IDPetition, List<ActionRequest> petitions) throws IOException {
+    private static void makePetitionsManager(Manager manager, List<ActionRequest> petitions) throws IOException {
         int cod_category = Category.selectCategory();
         System.out.println("Write the title of the petition according to the id request: ");
         Global.inputKeyboard.nextLine();
@@ -156,7 +271,7 @@ public static Boolean managerMethod(Manager manager) {
         System.out.println("Write a short description of the problem");
         String description = Global.inputKeyboard.nextLine();
         String article = ActionRequest.selectArticle();
-        ActionRequest petition = new ActionRequest(IDPetition, cod_category, manager.getDNI(),title, description,article);
+        ActionRequest petition = new ActionRequest(ActionRequest.setId(), cod_category, manager.getDNI(),title, description,article);
         System.out.println(petition);
         petitions.add(petition);
         CsvHandler.writePetitionCsv(petitions);
