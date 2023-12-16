@@ -131,7 +131,7 @@ public class MainPruebasManager {
                                         request.setDescription();
                                         break;
                                     case 4:
-                                        request.selectArticle();
+                                        ActionRequest.selectArticle();
                                         break;
                                     case 5:
                                         return false;
@@ -183,18 +183,20 @@ public class MainPruebasManager {
                     makePetitionsManager(manager, IDPetition, petitions);
                     IDPetition++;
                 } else {
+                    List<Ticket> tickets = CsvHandler.getTicketsCsv();
                     Ticket ticket = new Ticket();
                     ticket.setId();
                     System.out.println("Which technician do you want to assign it to?");
                     ticket.setDni_technician(Technician.selectTechnician());
-
                     ticket.setDni_manager(manager.getDNI());
                     System.out.println("Which petition is referencing this ticket?");
-
+                    ticket.setId_petition(ActionRequest.selectActionRequest());
                     ticket.setState();
                     ticket.setTitle();
                     ticket.setDescription();
                     System.out.println(ticket);
+                    tickets.add(ticket);
+                    CsvHandler.writeTicketsCsv(tickets);
                 }
             } else {
                 return false;

@@ -129,6 +129,8 @@ public class Ticket {
              "Title: " + getTitle() + "\n" +
              "Description: " + getDescription() + "\n" +
              "Technician DNI: " + getDni_technician() + "\n" +
+             "Manager DNI: " + getDni_manager() + "\n" +
+             "ID_Request: " + getId_petition() + "\n" +
              "State: " + getState() + "\n";
         return s;
     }

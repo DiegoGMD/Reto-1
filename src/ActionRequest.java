@@ -1,6 +1,5 @@
 import java.io.IOException;
 import java.util.List;
-import java.util.Scanner;
 
 public class ActionRequest {
     private int id_request;
@@ -149,8 +148,13 @@ public class ActionRequest {
     }
 
     //-----------------------------------Setters----------------------------------------------//
-    public void setId_request(int id_request) {
-        this.id_request = id_request;
+    public void setId_request() throws IOException {
+        List<ActionRequest> petitions = CsvHandler.getPetitionsCsv();
+        int counter = 1;
+        for (ActionRequest petition : petitions) {
+            counter++;
+        }
+        this.id_request = counter;
     }
 
     public void setId_category(int id_category) {
@@ -185,5 +189,28 @@ public class ActionRequest {
                 "Title: " + title + "\n" +
                 "Description: " + description + "\n" +
                 "Article: " + article + "\n";
+    }
+
+    public static int selectActionRequest() throws IOException {
+        List<ActionRequest> requests = CsvHandler.getPetitionsCsv();
+        int id = 0;
+        while (id == 0) {
+            int index = 1;
+            for (ActionRequest request : requests) {
+                System.out.println(Main.Divider);
+                System.out.println(index + " | " + request);
+                index++;
+            }
+            System.out.println("Choose the Petition:");
+            String numIndex = Global.inputKeyboard.next();
+            index = 1;
+            for (ActionRequest request : requests) {
+                if (numIndex.equals(index + "")) {
+                    id += request.getId_request();
+                }
+                index++;
+            }
+        }
+        return id;
     }
 }
