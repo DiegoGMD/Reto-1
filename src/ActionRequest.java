@@ -73,6 +73,15 @@ public class ActionRequest {
         return s;
     }
 
+    public static int setId() throws IOException {
+        List<ActionRequest> actions = CsvHandler.getPetitionsCsv();
+        int counter = 1;
+        for (ActionRequest actionRequest : actions) {
+            counter++;
+        }
+        return counter;
+    }
+
 
 
 

@@ -174,14 +174,12 @@ public class MainPruebasManager {
                 }
             } else if (option.equals("3")) {
                 List<ActionRequest> petitions = CsvHandler.getPetitionsCsv();
-                int IDPetition = 5;
                 System.out.println("You want to create request(1) or ticket(2)?");
                 option2 = Global.inputKeyboard.next();
                 if (!option2.equals("1") && !option2.equals("2")) {
                     System.out.println("Please enter a valid option");
                 } else if (option2.equals("1")) {
-                    makePetitionsManager(manager, IDPetition, petitions);
-                    IDPetition++;
+                    makePetitionsManager(manager, petitions);
                 } else {
                     List<Ticket> tickets = CsvHandler.getTicketsCsv();
                     Ticket ticket = new Ticket();
@@ -205,7 +203,7 @@ public class MainPruebasManager {
         return true;
     }
 
-    private static void makePetitionsManager(Manager manager, int IDPetition, List<ActionRequest> petitions) throws IOException {
+    private static void makePetitionsManager(Manager manager, List<ActionRequest> petitions) throws IOException {
         int cod_category = Category.selectCategory();
         System.out.println("Write the title of the petition according to the id request: ");
         Global.inputKeyboard.nextLine();
@@ -213,7 +211,7 @@ public class MainPruebasManager {
         System.out.println("Write a short description of the problem");
         String description = Global.inputKeyboard.nextLine();
         String article = ActionRequest.selectArticle();
-        ActionRequest petition = new ActionRequest(IDPetition, cod_category, manager.getDNI(),title, description,article);
+        ActionRequest petition = new ActionRequest(ActionRequest.setId(), cod_category, manager.getDNI(),title, description,article);
         System.out.println(petition);
         petitions.add(petition);
         CsvHandler.writePetitionCsv(petitions);
