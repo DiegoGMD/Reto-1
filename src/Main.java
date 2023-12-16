@@ -144,6 +144,7 @@ public class Main {
                                 switch (modifyOption) {
                                     default:
                                         System.out.println("Please enter a valid option");
+                                        break;
                                     case 1:
                                         request.setId_category(Category.selectCategory());
                                         break;
@@ -175,6 +176,7 @@ public class Main {
                                 switch (modifyOption) {
                                     default:
                                         System.out.println("Please enter a valid option");
+                                        break;
                                     case 1:
                                         ticket.setTitle();
                                         break;
@@ -182,7 +184,7 @@ public class Main {
                                         ticket.setDescription();
                                         break;
                                     case 3:
-                                        //ticket.setDni_technician();
+                                        ticket.setDni_technician(Technician.selectTechnician());
                                         break;
                                     case 4:
                                         ticket.setState();
