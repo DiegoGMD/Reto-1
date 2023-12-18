@@ -63,6 +63,7 @@ public class ActionRequest {
             for (Inventory inventoryItem : inventory) {
                 System.out.println(inventoryItem);
             }
+            Global.inputKeyboard.nextLine();
             String cod_article = Global.inputKeyboard.nextLine();
             for (Inventory inventoryItem : inventory) {
                 if (inventoryItem.getCod_serie().equals(cod_article)) {
@@ -176,11 +177,13 @@ public class ActionRequest {
 
     public void setTitle() {
         System.out.println("Write below the ActionRequest title:");
+        Global.inputKeyboard.nextLine();
         this.title = Global.inputKeyboard.nextLine();
     }
 
     public void setDescription() {
         System.out.println("Write below the ActionRequest description:");
+        Global.inputKeyboard.nextLine();
         this.description = Global.inputKeyboard.nextLine();
     }
 

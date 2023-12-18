@@ -15,11 +15,11 @@ public class Main {
         users = CsvHandler.getUsersCsv();
         technicians = CsvHandler.getTechniciansCsv();
         managers = CsvHandler.getManagerCsv();
-        User user = null;
-        Technician technician = null;
-        Manager manager = null;
         boolean exit = false;
         while (!exit) {
+            User user = null;
+            Technician technician = null;
+            Manager manager = null;
             boolean selectUser = false;
             while (!selectUser) {
                 System.out.println(Divider);
