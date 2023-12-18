@@ -3,5 +3,3 @@ ID,ID_Category,ID_User,Title,Description,Inventory
 2,15,12345678D,Internal issue in the tower,It seems that there is a fan that is not working normally,Tower_Admin
 3,7,12345678R,Keyboard Failure,Some keys are not working properly,MouseKeyboard_Sales
 4,11,12345678S,Router Unresponsive,Upon turning on the router,Router
-5,5,12345678A,TestNewTitle,TestNewDescription, when we tried to start it again nothing happened
-6,1,87654321A,TestCreatePetition,TestDescriptionPetition,Monitor_Sales

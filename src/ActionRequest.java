@@ -63,8 +63,7 @@ public class ActionRequest {
             for (Inventory inventoryItem : inventory) {
                 System.out.println(inventoryItem);
             }
-            Global.inputKeyboard.nextLine();
-            String cod_article = Global.inputKeyboard.nextLine();
+            String cod_article = Global.inputKeyboard.next();
             for (Inventory inventoryItem : inventory) {
                 if (inventoryItem.getCod_serie().equals(cod_article)) {
                     s += inventoryItem.getArticles();
